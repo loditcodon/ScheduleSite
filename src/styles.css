@@ -1,0 +1,267 @@
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: black;
+  opacity: 1; /* Firefox */
+}
+
+input[type=number] {
+    width: 40px;
+}
+
+#newsite {
+	width: 75%;
+}
+#newsiteadd {
+	cursor: pointer;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.display >> table {
+	width: 75%;
+}
+
+td, th {
+	padding: 3px 5px;
+}
+
+#topBar {
+	margin: 0px;
+}
+
+h1 {
+	margin: 10px;
+	font-size: 35px;
+}
+
+h1, #settingsButton {
+	display: inline;
+}
+
+#settingsButton {
+	height: 43px;
+	margin-top: 5px;
+	margin-right: 5px;
+	float: right;
+	
+	font-size: 20px;	
+	background: url('../images/cog.png') left center no-repeat;
+	background-size: 30px;
+	padding-left: 35px;	
+	cursor: pointer;
+}
+
+
+#widgetsParent {
+	margin-top: 50px;
+	width: 99%;
+}
+
+.widget {
+	margin: 5px;
+	padding: 5px;
+	
+	border: 2px solid black;
+}
+
+#tester {
+	max-width: 400px;
+}
+#testerinput1, #testerinput2 {
+	margin-bottom: 5px;
+	width: 96.8%;
+}
+#testerresult {
+	font-weight: bold;
+}
+#testerbutton {
+	width: 99%;
+	margin-top: 5px;
+	cursor: pointer;
+}
+
+#personalMessage {
+	width: 400px;
+}
+#personalMessage > p {
+	font-size: 15px;
+	text-indent: 2em;
+}
+
+
+/* Source: https://www.w3schools.com/howto/howto_css_overlay.asp */
+#settingsChangeOverlay,
+#recordEditOverlay {
+	position: fixed; /* Sit on top of the page content */
+	display: none; /* Hidden by default */
+	width: 100%; /* Full width (cover the whole page) */
+	height: 100%; /* Full height (cover the whole page) */
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+	z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+	cursor: pointer; /* Add a pointer on hover */
+		
+	justify-content: center;
+}
+
+.settingsFullsizeParent {
+	border: 2px solid black;
+	padding: 5px;
+	margin-top: 5px;
+	
+	font-size: 20px;
+}
+.settingsFullsizeParent > p {
+	font-size: 12px;
+}
+#langPickerLabel,
+#freqPickerLabel,
+#colorPickerLabel{
+	padding-bottom: 1px;
+	margin-right: 2px;
+}
+#langPicker {
+	margin-top: 10px;
+	width: 100px;
+	cursor: pointer;
+}
+#freqPicker {
+	margin-top: 10px;
+	width: 100px;
+}
+#colorPicker {
+	margin-top: 4px;
+	width: 100px;
+	cursor: pointer;
+}
+
+#import, #export,
+#settingsMenuOK, #settingsMenuCancel {
+	height: 43px;	
+	font-size: 20px;
+	cursor: pointer;
+	
+	margin-top: 5px;
+	width: 49%;
+	min-width: 80px;
+}
+
+#export,
+#settingsMenuCancel {
+	float: right;
+}
+
+#settingsMenu {
+	margin-top: 5px;
+	width: 100%;
+	min-width: 220px;
+	max-width: 440px;
+	
+	max-height: 775px;
+	padding: 5px;
+	
+	cursor: default;
+}
+
+
+
+
+.editCell {
+	padding: 0px;
+}
+
+.editButton {
+	margin: 10%;
+	width: 30px;
+	height: 30px;
+	background: url('../images/pencil.png') left center no-repeat;
+	background-size: 25px;
+	
+	border-width: 0;
+	cursor: pointer;
+}
+
+#recordChangeMenu {
+	margin-top: 5px;
+	width: 100%;
+	min-width: 220px;
+	max-width: 440px;
+	
+	max-height: 650px;
+	padding: 1%;
+	
+	cursor: default;
+}
+
+#patternInputParent,
+#softLockHoursInputParent,
+#hardLockHoursInputParent,
+#timeoutsInputParent,
+#destinationInputParent {
+	border: 2px solid black;
+	padding: 1%;
+	margin-top: 5px;
+	
+	font-size: 20px;
+}
+
+#patternInput,
+#softLockHoursInput,
+#hardLockHoursInput,
+#timeoutStringInput,
+#destinationInput {
+	width: 98%;
+}
+
+#timeoutsNATLabel,
+#timeoutsNTOLabel,
+#timeoutsSATLabel,
+#timeoutsSTOLabel {
+	font-size: 15px;
+	float: left;
+}
+
+#timeoutsNATInput,
+#timeoutsNTOInput,
+#timeoutsSATInput,
+#timeoutsSTOInput {
+	font-size: 15px;
+	float: right;
+	text-align: right;
+}
+
+#destinationInput{
+	width: 98%;
+}
+#actionInputCustomCodeArea{
+	width: 98%;
+}
+
+#recordEditDelete {
+	margin-top: 5px;
+	width: 100%;
+	min-width: 150px;
+	
+	height: 43px;	
+	font-size: 20px;
+	cursor: pointer;
+}
+
+#recordEditOK, #recordEditCancel {
+	margin-top: 5px;
+	width: 49%;
+	min-width: 80px;
+	
+	height: 43px;	
+	font-size: 20px;
+	cursor: pointer;
+}
+
+#recordEditCancel {
+	float: right;
+}
