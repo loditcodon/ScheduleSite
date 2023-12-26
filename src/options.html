@@ -1,255 +1,429 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<link rel="stylesheet" href="styles.css">
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>List Block</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+	<title>List Block</title>
+	<meta content="" name="description">
+	<meta content="" name="keywords">
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+	<!-- Favicons -->
+	<link href="assets/img/favicon.png" rel="icon">
+	<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+	<!-- Google Fonts -->
+	<link href="https://fonts.gstatic.com" rel="preconnect">
+	<link
+		href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+		rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
-  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+	<!-- Vendor CSS Files -->
+	<link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+	<link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+	<link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+	<link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+	<link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+	<link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: NiceAdmin
-  * Updated: Nov 17 2023 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+	<!-- Template Main CSS File -->
+	<link href="assets/css/style.css" rel="stylesheet">
 </head>
 
 <body>
+	<!-- ======= Header ======= -->
+	<header id="header" class="header fixed-top d-flex align-items-center">
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="header fixed-top d-flex align-items-center">
+		<div class="d-flex align-items-center justify-content-between">
+			<a href="index.html" class="logo d-flex align-items-center">
+				<img src="assets/img/logo.png" alt="">
+				<span class="d-none d-lg-block">Block Site</span>
+			</a>
+			<i class="bi bi-list toggle-sidebar-btn"></i>
+		</div><!-- End Logo -->
 
-    <div class="d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
-        <img src="assets/img/logo.png" alt="">
-        <span class="d-none d-lg-block">Block Extension</span>
-      </a>
-      <i class="bi bi-list toggle-sidebar-btn"></i>
-    </div><!-- End Logo -->
+		<!-- <div class="search-bar">
+			<form class="search-form d-flex align-items-center" method="POST" action="#">
+				<input type="text" name="query" placeholder="Search" title="Enter search keyword">
+				<button type="submit" title="Search"><i class="bi bi-search"></i></button>
+			</form>
+		</div> -->
 
-    <div class="search-bar">
-      <form class="search-form d-flex align-items-center" method="POST" action="#">
-        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-      </form>
-    </div><!-- End Search Bar -->
+		<nav class="header-nav ms-auto">
+			<ul class="d-flex align-items-center">
 
-    <nav class="header-nav ms-auto">
-      <ul class="d-flex align-items-center">
+				<li class="nav-item d-block d-lg-none">
+					<a class="nav-link nav-icon search-bar-toggle " href="#">
+						<i class="bi bi-search"></i>
+					</a>
+				</li><!-- End Search Icon-->
 
-        <li class="nav-item d-block d-lg-none">
-          <a class="nav-link nav-icon search-bar-toggle " href="#">
-            <i class="bi bi-search"></i>
-          </a>
-        </li><!-- End Search Icon-->
+				<li class="nav-item dropdown">
 
-        <li class="nav-item dropdown">  
+					<!-- <a id="settingsButton" class="nav-link nav-icon" href="#" data-bs-toggle="dropdown"> -->
+					<i class="bi bi-gear"></i>
+					</a><!-- End Messages Icon -->
 
-          <a id="settingsButton" class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-            <i class="bi bi-gear" ></i>
-          </a><!-- End Messages Icon -->
+					<ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
 
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-            
 
-          </ul><!-- End Messages Dropdown Items -->
+					</ul><!-- End Messages Dropdown Items -->
 
-        </li><!-- End Messages Nav -->
+				</li><!-- End Messages Nav -->
 
-        <li class="nav-item dropdown pe-3">
+			</ul>
+		</nav><!-- End Icons Navigation -->
 
-          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">N. D. Khanh</span>
-          </a><!-- End Profile Iamge Icon -->
+	</header><!-- End Header -->
 
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-            <li class="dropdown-header">
-              <h6>Kevin Anderson</h6>
-              <span>Web Designer</span>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
 
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-person"></i>
-                <span>My Profile</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
+	<!-- Popup-->
+	<div class="popup-container" id="popupContainer">
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Add domain block</h5>
 
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-gear"></i>
-                <span>Account Settings</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
+				<!-- Vertical Form -->
+				<form class="row g-3">
+					<div class="col-12">
+						<label for="inputNanme4" class="form-label">Domain</label>
+						<input id="newsite" type="text" class="form-control" id="inputText">
+					</div>
+					<div class="text-center">
+						<button id="newsiteadd" type="submit" class="btn btn-primary">Submit</button>
+						<button type="reset" class="btn btn-secondary">Reset</button>
+					</div>
+				</form><!-- Vertical Form -->
 
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                <i class="bi bi-question-circle"></i>
-                <span>Need Help?</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
+			</div>
+		</div>
+	</div>
+	<!-- ======= Sidebar ======= -->
+	<aside id="sidebar" class="sidebar">
 
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
-                <i class="bi bi-box-arrow-right"></i>
-                <span>Sign Out</span>
-              </a>
-            </li>
+		<ul class="sidebar-nav" id="sidebar-nav">
 
-          </ul><!-- End Profile Dropdown Items -->
-        </li><!-- End Profile Nav -->
+			<li class="nav-item">
+				<a class="nav-link collapsed" href="options.html">
+					<i class="bi bi-grid"></i>
+					<span>Dashboard</span>
+				</a>
+			</li><!-- End Dashboard Nav -->
 
-      </ul>
-    </nav><!-- End Icons Navigation -->
+			<li class="nav-item">
+				<a class="nav-link collapsed" href="options.html">
+					<i class="bi bi-archive-fill"></i>
+					<span>Custom profile</span>
+				</a>
+			</li><!-- End Dashboard Nav -->
 
-  </header><!-- End Header -->
+			<li class="nav-item">
+				<a class="nav-link collapsed" href="options.html">
+					<i class="bi bi-bar-chart-fill"></i>
+					<span>Statistical</span>
+				</a>
+			</li><!-- End Dashboard Nav -->
 
-  <!-- ======= Sidebar ======= -->
-  <aside id="sidebar" class="sidebar">
+		</ul>
 
-    <ul class="sidebar-nav" id="sidebar-nav">
+	</aside><!-- End Sidebar-->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="index.html">
-          <i class="bi bi-grid"></i>
-          <span>Dashboard</span>
-        </a>
-      </li><!-- End Dashboard Nav -->
+	<main id="main" class="main">
 
-      <li class="nav-item">
-        <a class="nav-link " data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-layout-text-window-reverse"></i><span>Tables</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="tables-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="tables-general.html">
-              <i class="bi bi-circle"></i><span>General Tables</span>
-            </a>
-          </li>
-          <li>
-            <a href="tables-data.html" class="active">
-              <i class="bi bi-circle"></i><span>Data Tables</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Tables Nav -->
-      
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="options.html">
-          <i class="bi bi-layout-text-window-reverse"></i>
-          <span>List block</span>
-        </a>
-      </li><!-- End Contact Page Nav -->
-      
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="options.html">
-          <i class="bi bi-grid "></i>
-          <span>Custom profile</span>
-        </a>
-      </li><!-- End Dashboard Nav -->
+		<div class="pagetitle">
+			<h1>Restricted List</h1>
+		</div><!-- End Page Title -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="options.html">
-          <i class="bi bi-grid "></i>
-          <span>Statistical</span>
-        </a>
-      </li><!-- End Dashboard Nav -->
-
-    </ul>
-
-  </aside><!-- End Sidebar-->
-
-  <main id="main" class="main">
-
-    <div class="pagetitle">
-      <h1>List Block</h1>
-    </div><!-- End Page Title -->
-
-    <div class="row mb-3">
-      <div class="col-sm-8">
+		<div class="row mb-3">
+			<!-- <div class="col-sm-8">
         <input id="newsite" type="text" class="form-control" id="inputText">
-      </div>
-      <div class="col-sm-2">
-        <button id="newsiteadd" type="submit" class="btn btn-primary btn-block">Add Block</button>
-      </div>
-    </div>
-    
-
-    <section class="section">
-      <div class="row">
-        <div class="col-lg-12">
-
-          <div class="card">
-            <div class="card-body">
-            
-              <!-- Table with stripped rows -->
-              <div id="display" class="table datatable"></div>
-
-              <!-- End Table with stripped rows -->
-
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-  </main><!-- End #main -->
+      </div> -->
+			<div class="col-sm-2 ml-auto">
+				<!-- <button id="newsiteadd" onclick="openPopup()" type="submit" class="btn btn-primary btn-block">Add Block</button> -->
+				<button id="newsiteadd1" class="btn btn-primary btn-block">Add Block</button>
+			</div>
+		</div>
 
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+		<section class="section">
+			<div class="row">
+				<div class="col-lg-12">
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/chart.js/chart.umd.js"></script>
-  <script src="assets/vendor/echarts/echarts.min.js"></script>
-  <script src="assets/vendor/quill/quill.min.js"></script>
-  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
-  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="options_loader.js"></script>
+					<div class="card">
+						<div class="card-body">
 
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+							<!-- Table with stripped rows -->
+							<div id="display" class="table datatable"></div>
 
+							<!-- End Table with stripped rows -->
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+	</main><!-- End #main -->
+
+
+	<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+			class="bi bi-arrow-up-short"></i></a>
+
+
+
+	<!-- //// -->
+	<div class="hidden-div" id="topBar">
+		<h1>ScheduleBlock</h1>
+		<input class="hidden-div" type="button" id="settingsButton" value="Settings">
+	</div>
+
+	<div class="hidden-div" id="widgetParent">
+		<div class="widget">
+			<p class="hidden-div" id="tableHint">If you're reading this, translations must be broken :(</p>
+			<div class="hidden-div" id="display"></div>
+			<br>
+			<div id="input">
+				<input type="text" id="newsite" name="newsite"
+					placeholder="Regex that matches the site you want to be blocked">
+				<input class="hidden-div" type="button" id="newsiteadd" value="Add to the list">
+			</div>
+		</div>
+
+
+		<div class="hidden-div" class="widget" id="tester">
+			<h2 id="testertitle">Pattern Tester</h2>
+			<input type="text" id="testerinput1" name="testerinput1" placeholder="Regex pattern to test">
+			<input type="text" id="testerinput2" name="testerinput2" placeholder="String to test against">
+			<label id="testerresultlabel" for="testerresult">Status: </label>
+			<span id="testerresult" result="matching">Matching</span>
+			<input type="button" id="testerbutton" value="Check">
+		</div>
+
+
+		<div class="hidden-div" class="widget" id="personalMessage">
+			<h2 id="personalmessagetitle">Personal Message</h2>
+			<p id="personalmessagecontent">Hey, this is the least intrusive way we could think of contacting
+				you.<br /><br />
+				We want you to know that we deeply care about your experience with this little extension. If there is
+				any way we could improve it to make your life easier, let us know, either in a review or by creating an
+				issue on project's GitHub page. Same goes for any bugs you might find.<br /><br />
+				Last but not least, we believe in you, and you've got this.</p>
+		</div>
+	</div>
+
+	<div class="hidden-div" id="settingsChangeOverlay">
+		<div id="settingsMenu">
+			<input type="button" id="export" value="Export settings">
+			<input type="button" id="import" value="Import settings">
+			<input type="file" id="import2" name="import2" style="display: none;" />
+
+			<div id="langPickerParent" class="settingsFullsizeParent">
+				<label for="langPicker" id="langPickerLabel">Language:</label>
+				</br>
+				<select id="langPicker">
+					<option value="lang">language</option>
+				</select>
+			</div>
+			<div id="freqPickerParent" class="settingsFullsizeParent">
+				<label for="freqPicker" id="freqPickerLabel">Check frequency (s):</label>
+				</br>
+				<input type="number" id="freqPicker" min="0" value="15">
+			</div>
+			<div id="colorPickerParent" class="settingsFullsizeParent">
+				<label for="colorPicker" id="colorPickerLabel">Background color:</label>
+				</br>
+				<input type="color" id="colorPicker">
+			</div>
+			<div id="lockScreenBaseParent" class="settingsFullsizeParent">
+				<label for="lockScreenBase" id="lockScreenBaseLabel">Lock Screen Base URL:</label>
+				</br>
+				<p id="lockScreenBaseNote">Note: This should be a domain you have large amount of trust in. It also
+					should not be in your block list and preferably should be lightweight. Honestly, unless you have a
+					really good reason just leave it as it is (https://www.iana.org).</p>
+				<input id="lockScreenBase" name="lockScreenBase" type="url" required />
+			</div>
+			<div id="creditsParent" class="settingsFullsizeParent">
+				<label id="creditsLabel">Credits:</label>
+				</br>
+				- <a href="https://github.com/sdasda7777">sdasda7777</a> (<a
+					href="https://github.com/sdasda7777/ScheduleBlock">programming</a>, under GPL-3.0)
+				</br>
+				- <a href="https://lorcblog.blogspot.com/">Lorc</a>
+				(<a href="https://game-icons.net/1x1/lorc/cog.html">Cog icon</a>,
+				under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>)
+				</br>
+				- <a href="https://delapouite.com/">Delapouite</a>
+				(<a href="https://game-icons.net/1x1/delapouite/pencil.html">Pencil icon</a>, under <a
+					href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>)
+			</div>
+			<div class="settingsFullsizeParent">
+				<label id="creditsLabel">Other:</label>
+				</br>
+				<a href="../SpecRunner.html">Run tests</a>
+			</div>
+
+			<input type="button" id="settingsMenuOK" value="OK">
+			<input type="button" id="settingsMenuCancel" value="Cancel">
+		</div>
+	</div>
+
+	<div id="recordEditOverlay">
+
+
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Horizontal Form</h5>
+
+				<!-- Horizontal Form -->
+				<form>
+					<div class="row mb-3">
+						<label for="patternInput" class="form-label" id="patternInputLabel">Pattern</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="patternInput" value="pattern-here">
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label for="softLockHoursInput" id="softLockHoursLabel" class="form-label">Soft locked
+							hours</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="softLockHoursInput" value="softhours-here">
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label for="hardLockHoursInput" id="hardLockHoursLabel" class="form-label">Hard
+							locked hours</label>
+						<div class="col-sm-10">
+							<input type="text" id="hardLockHoursInput" value="hardhours-here">
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label for="hardLockHoursInput" id="hardLockHoursLabel" class="form-label">Timeouts</label>
+						<div class="col-sm-10">
+							<input type="text" id="timeoutStringInput" value="timeouts-here">
+						</div>
+					</div>
+
+					<fieldset class="row mb-3">
+						<label label for="destinationInput" id="destinationLabel" class="form-label">Action</label>
+						<div class="col-sm-10">
+							<div class="form-check">
+								<input class="form-check-input" type="radio" id="actionInputClose" name="actionInput"
+									value="Close">
+								<label class="form-check-label" for="actionInputClose" id="actionInputCloseLabel">Close
+									window</label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" id="actionInputLockPage" name="actionInput"
+									value="Close">
+								<label class="form-check-label" for="actionInputClose"
+									id="actionInputCloseLabel">Redirect to lock page</label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" id="actionInputRedirect" name="actionInput"
+									value="Redirect">
+								<label class="form-check-label" for="actionInputRedirect"
+									id="actionInputRedirectLabel">Redirect to:</label>
+								<input class="form-control" type="text" id="destinationInput" value="destination-here">
+							</div>
+
+							<div class="form-check">
+								<input class="form-check-input" type="radio" id="actionInputCustom" name="actionInput"
+									value="Redirect">
+								<label class="form-check-label" for="actionInputCustom"
+									id="actionInputCustomCodeLabel">Custom code:</label>
+								<input class="form-control" type="text" id="actionInputCustomCodeArea">
+							</div>
+						</div>
+					</fieldset>
+					<!-- <div class="text-center">
+						<button type="submit" id="recordEditOK" class="btn btn-primary">Submit</button>
+						<button type="delate" id="recordEditDelete" class="btn btn-danger">Delete</button>
+						<button type="reset" class="btn btn-secondary">Reset</button>
+					</div> -->
+					<div class="d-flex justify-content-between text-center">
+
+						<!-- <button type="reset" class="btn btn-secondary">Reset</button> -->
+					</div>
+					<div class="align-items-center">
+						<!-- <button type="submit" id="recordEditOK" class="btn btn-primary">Submit</button> -->
+						<!-- <button type="delate" id="recordEditDelete" class="btn btn-danger">Delete</button> -->
+
+					</div>
+					<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+						<button type="submit" id="recordEditOK" class="btn btn-primary">Submit</button>
+						<button type="delate" id="recordEditDelete" class="btn btn-danger">Delete</button>
+						<!-- <button type="reset" id = "aaaaa" class="btn btn-secondary">Reset</button> -->
+					</div>
+
+
+
+				</form><!-- End Horizontal Form -->
+
+			</div>
+		</div>
+
+
+		<div class="hidden-div" id="recordChangeMenu">
+
+			<div id="patternInputParent">
+				<label for="patternInput" id="patternInputLabel">Pattern:</label>
+				</br>
+				<input type="text" id="patternInput" value="pattern-here">
+			</div>
+			<div id="softLockHoursInputParent">
+				<label for="softLockHoursInput" id="softLockHoursLabel">Soft locked hours:</label>
+				</br>
+				<input type="text" id="softLockHoursInput" value="softhours-here">
+			</div>
+			<div id="hardLockHoursInputParent">
+				<label for="hardLockHoursInput" id="hardLockHoursLabel">Hard locked hours:</label>
+				</br>
+				<input type="text" id="hardLockHoursInput" value="hardhours-here">
+			</div>
+
+			<div id="timeoutsInputParent">
+				<label for="timeoutsInputParent" id="timeoutsLabel">Timeouts:</label>
+				</br>
+				<input type="text" id="timeoutStringInput" value="timeouts-here">
+			</div>
+
+			<div id="destinationInputParent">
+				<label for="destinationInput" id="destinationLabel">Action:</label>
+				</br>
+
+				<input type="radio" id="actionInputClose" name="actionInput" value="Close">
+				<label for="actionInputClose" id="actionInputCloseLabel">Close window</label><br>
+
+				<input type="radio" id="actionInputLockPage" name="actionInput" value="Close">
+				<label for="actionInputLockPage" id="actionInputLockPageLabel">Redirect to lock page</label><br>
+
+				<input type="radio" id="actionInputRedirect" name="actionInput" value="Redirect">
+				<label for="actionInputRedirect" id="actionInputRedirectLabel">Redirect to: </label>
+				<input type="text" id="destinationInput" value="destination-here"><br>
+
+				<input type="radio" id="actionInputCustom" name="actionInput" value="Custom Code">
+				<label for="actionInputCustom" id="actionInputCustomCodeLabel">Custom code:</label>
+				<textarea id="actionInputCustomCodeArea">console.log("Hello world");</textarea>
+
+
+			</div>
+
+			<input type="button" id="recordEditDelete" value="Delete">
+			<input type="button" id="recordEditOK" value="OK">
+			<input type="button" id="recordEditCancel" value="Cancel">
+		</div>
+	</div>
 </body>
+<style type="text/css" id="rebuildPersistantStylesheet">
+	* {}
+</style>
+<script src="options_loader.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="popup1.js"></script>
+
 
 </html>

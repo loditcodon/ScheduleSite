@@ -1,6 +1,6 @@
 /**
  * @file Describes what happens every time any page is loaded.
- * @author sdasda7777
+ * @author khanhnguyenduy
  */
 
 let documentLoaded = false;
@@ -11,29 +11,24 @@ window.addEventListener("load",
 );
 
 // Logging function
-function logJ()
-{
+function logJ() {
 	console.log.apply(this,
-		Array.prototype.slice.call(arguments, 0).map((i)=>JSON.stringify(i)));
+		Array.prototype.slice.call(arguments, 0).map((i) => JSON.stringify(i)));
 };
 
 const defaultLocationChangeRegex = new RegExp("^window.location = '(?:[^\\']|\\.)*';$");
 
 chrome.runtime.onMessage.addListener(
 	(message) => {
-		if(message.type === "ScheduleBlock_Content_ExecuteAction")
-		{
+		if (message.type === "ScheduleBlock_Content_ExecuteAction") {
 			//logJ(message.action);
-			if(message.action == "window.close();")
-			{
+			if (message.action == "window.close();") {
 				window.close();
 			}
-			else if(defaultLocationChangeRegex.test(message.action))
-			{
+			else if (defaultLocationChangeRegex.test(message.action)) {
 				window.location = message.action.slice("window.location = '".length, -("';".length));
 			}
-			else if(message.action !== undefined)
-			{
+			else if (message.action !== undefined) {
 				const scriptElement = document.createElement('div');
 				scriptElement.setAttribute('onclick', message.action);
 				document.documentElement.appendChild(scriptElement);
@@ -41,17 +36,15 @@ chrome.runtime.onMessage.addListener(
 				scriptElement.remove();
 			}
 		}
-		else if(message.type === "ScheduleBlock_Content_Initialize")
-		{
+		else if (message.type === "ScheduleBlock_Content_Initialize") {
 			// This sets up continuous hard lock checks
 			let checker = setInterval(
 				() => {
 					// This condition prevents "Uncaught error: Extension context invalidated"
 					//  (would otherwise happen when extension is unloaded during operation)
-					if(chrome === undefined
-					   || chrome.runtime === undefined
-					   || chrome.runtime.id === undefined)
-					{
+					if (chrome === undefined
+						|| chrome.runtime === undefined
+						|| chrome.runtime.id === undefined) {
 						clearInterval(checker);
 						return;
 					}
@@ -68,8 +61,7 @@ chrome.runtime.onMessage.addListener(
 				message.properties.CheckFrequency * 1000
 			);
 		}
-		else if(message.type === "ScheduleBlock_Content_CreateLockScreen")
-		{
+		else if (message.type === "ScheduleBlock_Content_CreateLockScreen") {
 			let createLockScreenLambda = () => {
 				// Clear the website
 				document.querySelector("html").innerHTML = "";
@@ -95,7 +87,7 @@ chrome.runtime.onMessage.addListener(
 				backButton.type = "button";
 				backButton.value = "Go back";
 				document.querySelector("body").appendChild(backButton);
-				backButton.addEventListener("click", ()=>{window.location = sourceUrl;});
+				backButton.addEventListener("click", () => { window.location = sourceUrl; });
 
 				// Create style tag, set background color
 				console.log(message.properties);
@@ -112,39 +104,34 @@ chrome.runtime.onMessage.addListener(
 					(message) => {
 						console.log(message);
 
-						if(message.type === "ScheduleBlock_LockScreen_SetUnlockTime")
-						{
-							if(displayIntervalHandle !== null)
+						if (message.type === "ScheduleBlock_LockScreen_SetUnlockTime") {
+							if (displayIntervalHandle !== null)
 								clearInterval(displayIntervalHandle);
 							unlockTime = new Date(message.unlockTime);
 
-							let updateTimeDisplay = () =>
-							{
-								if(chrome === undefined
-								   || chrome.runtime === undefined
-								   || chrome.runtime.id === undefined)
-								{
+							let updateTimeDisplay = () => {
+								if (chrome === undefined
+									|| chrome.runtime === undefined
+									|| chrome.runtime.id === undefined) {
 									clearInterval(displayIntervalHandle);
 									return;
 								}
 
 								let currentTime = new Date();
-								if(currentTime.getTime() >= unlockTime)
-								{
+								if (currentTime.getTime() >= unlockTime) {
 									document.getElementById("remainingTimeDisplay").innerText = "00:00:00";
 								}
-								else
-								{
+								else {
 									let timeDifference = Math.floor((unlockTime - currentTime.getTime()) / 1000);
 
 									let seconds = timeDifference % 60;
 									let minutes = ((timeDifference - seconds) / 60) % 60;
-									let hours =   ((timeDifference - 60 * minutes - seconds) / 3600);
+									let hours = ((timeDifference - 60 * minutes - seconds) / 3600);
 
 									document.getElementById("remainingTimeDisplay").innerText
 										= "" + String("0" + hours).slice(-2)
-											+ ":" + String("0" + minutes).slice(-2)
-											+ ":" + String("0" + seconds).slice(-2);
+										+ ":" + String("0" + minutes).slice(-2)
+										+ ":" + String("0" + seconds).slice(-2);
 								}
 							};
 
@@ -156,12 +143,10 @@ chrome.runtime.onMessage.addListener(
 
 				//TODO: clear interval on extension failure?
 				let storageIntervalHandle = null;
-				function updateTimeFromStorage()
-				{
-					if(chrome === undefined
-					   || chrome.runtime === undefined
-					   || chrome.runtime.id === undefined)
-					{
+				function updateTimeFromStorage() {
+					if (chrome === undefined
+						|| chrome.runtime === undefined
+						|| chrome.runtime.id === undefined) {
 						clearInterval(storageIntervalHandle);
 						return;
 					}
@@ -175,15 +160,13 @@ chrome.runtime.onMessage.addListener(
 				}
 
 				updateTimeFromStorage();
-				storageIntervalHandle = setInterval(updateTimeFromStorage, 3*60*1000);
+				storageIntervalHandle = setInterval(updateTimeFromStorage, 3 * 60 * 1000);
 			};
 
-			if(documentLoaded)
-			{
+			if (documentLoaded) {
 				createLockScreenLambda();
 			}
-			else
-			{
+			else {
 				window.addEventListener("load", createLockScreenLambda);
 			}
 		}

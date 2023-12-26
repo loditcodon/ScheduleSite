@@ -1,0 +1,83 @@
+#todayTab,#dailyTab,#weekTab,#settingTab{
+    background-color: rgba(114,106,149,0.3);
+    color:black;
+    transition: 1s;
+}
+
+#todayTab:hover{
+    background-color: rgba(53,31,57,0.5);
+}
+#dailyTab:hover{
+    background-color: rgba(53,31,57,0.5);
+}
+#weekTab:hover{
+    background-color: rgba(53,31,57,0.5);
+}
+#settingTab:hover{
+    background-color: rgba(53,31,57,0.5);
+}
+#settingIcon:hover{
+    background-color: rgba(53,31,57,0.5);
+}
+#blockIconContainer:hover {
+    background-color: #5e5b5b; /* Change the background color on hover */
+    cursor: pointer; /* Change the cursor to a pointer on hover */
+    border-radius: 3px; /* Add a subtle border radius on hover */
+}
+#blockIconContainer:active {
+    background-color: #0b0b0b; /* Change the background color on hover */
+    cursor: pointer; /* Change the cursor to a pointer on hover */
+    border-radius: 3px; /* Add a subtle border radius on hover */
+}
+
+.setting-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    background-color: rgba(114, 106, 149, 0.3); 
+    color: black;
+    transition: 1s;
+    border-radius: 50%;
+}
+
+.setting-icon:hover {
+    background-color: rgba(53, 31, 57, 0.5); 
+    color: white;
+}
+
+.setting-icon img {
+    width: 20px;
+    height: 19px; 
+}
+
+.nav-link.active{
+    background-color: rgba(53,31,57,0.75) !important;
+    color: white !important;
+}
+
+#detailBtn,#detailBtn2{
+    background-color: #719fb0;
+    color:#212529;
+    transition: 1s;
+}
+
+#detailBtn:hover,#detailBtn2:hover{
+    background-color: #0d2e3a;
+    color:white;
+}
+
+.card-header{
+    background-color: #719fb0 ;
+}
+
+#dateSubmit{
+    background-color: #719fb0;
+    color:#212529;
+    transition: 1s;
+}
+
+#dateSubmit:hover{
+    background-color: #0d2e3a;
+    color:white;
+}

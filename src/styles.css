@@ -1,29 +1,33 @@
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: black;
-  opacity: 1; /* Firefox */
+::placeholder {
+	/* Chrome, Firefox, Opera, Safari 10.1+ */
+	opacity: 1;
+	/* Firefox */
 }
 
 input[type=number] {
-    width: 40px;
+	width: 40px;
 }
 
 #newsite {
 	width: 75%;
 }
+
 #newsiteadd {
 	cursor: pointer;
 }
 
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
+table,
+th,
+td {
+	border-collapse: collapse;
 }
 
-.display >> table {
+.display table {
 	width: 75%;
 }
 
-td, th {
+td,
+th {
 	padding: 3px 5px;
 }
 
@@ -36,7 +40,8 @@ h1 {
 	font-size: 35px;
 }
 
-h1, #settingsButton {
+h1,
+#settingsButton {
 	display: inline;
 }
 
@@ -45,11 +50,11 @@ h1, #settingsButton {
 	margin-top: 5px;
 	margin-right: 5px;
 	float: right;
-	
-	font-size: 20px;	
+
+	font-size: 20px;
 	background: url('../images/cog.png') left center no-repeat;
 	background-size: 30px;
-	padding-left: 35px;	
+	padding-left: 35px;
 	cursor: pointer;
 }
 
@@ -62,20 +67,23 @@ h1, #settingsButton {
 .widget {
 	margin: 5px;
 	padding: 5px;
-	
-	border: 2px solid black;
+
 }
 
 #tester {
 	max-width: 400px;
 }
-#testerinput1, #testerinput2 {
+
+#testerinput1,
+#testerinput2 {
 	margin-bottom: 5px;
 	width: 96.8%;
 }
+
 #testerresult {
 	font-weight: bold;
 }
+
 #testerbutton {
 	width: 99%;
 	margin-top: 5px;
@@ -85,7 +93,8 @@ h1, #settingsButton {
 #personalMessage {
 	width: 400px;
 }
-#personalMessage > p {
+
+#personalMessage>p {
 	font-size: 15px;
 	text-indent: 2em;
 }
@@ -94,58 +103,70 @@ h1, #settingsButton {
 /* Source: https://www.w3schools.com/howto/howto_css_overlay.asp */
 #settingsChangeOverlay,
 #recordEditOverlay {
-	position: fixed; /* Sit on top of the page content */
-	display: none; /* Hidden by default */
-	width: 100%; /* Full width (cover the whole page) */
-	height: 100%; /* Full height (cover the whole page) */
+	position: fixed;
+	/* Sit on top of the page content */
+	display: none;
+	/* Hidden by default */
+	width: 100%;
+	/* Full width (cover the whole page) */
+	height: 100%;
+	/* Full height (cover the whole page) */
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: rgba(0,0,0,0.5); /* Black background with opacity */
-	z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-	cursor: pointer; /* Add a pointer on hover */
-		
+	/* Black background with opacity */
+	z-index: 2;
+	/* Specify a stack order in case you're using a different order for other elements */
+	cursor: pointer;
+	/* Add a pointer on hover */
+
 	justify-content: center;
 }
 
 .settingsFullsizeParent {
-	border: 2px solid black;
 	padding: 5px;
 	margin-top: 5px;
-	
+
 	font-size: 20px;
 }
-.settingsFullsizeParent > p {
+
+.settingsFullsizeParent>p {
 	font-size: 12px;
 }
+
 #langPickerLabel,
 #freqPickerLabel,
-#colorPickerLabel{
+#colorPickerLabel {
 	padding-bottom: 1px;
 	margin-right: 2px;
 }
+
 #langPicker {
 	margin-top: 10px;
 	width: 100px;
 	cursor: pointer;
 }
+
 #freqPicker {
 	margin-top: 10px;
 	width: 100px;
 }
+
 #colorPicker {
 	margin-top: 4px;
 	width: 100px;
 	cursor: pointer;
 }
 
-#import, #export,
-#settingsMenuOK, #settingsMenuCancel {
-	height: 43px;	
+#import,
+#export,
+#settingsMenuOK,
+#settingsMenuCancel {
+	height: 43px;
 	font-size: 20px;
 	cursor: pointer;
-	
+
 	margin-top: 5px;
 	width: 49%;
 	min-width: 80px;
@@ -161,10 +182,10 @@ h1, #settingsButton {
 	width: 100%;
 	min-width: 220px;
 	max-width: 440px;
-	
+
 	max-height: 775px;
 	padding: 5px;
-	
+
 	cursor: default;
 }
 
@@ -181,7 +202,7 @@ h1, #settingsButton {
 	height: 30px;
 	background: url('../images/pencil.png') left center no-repeat;
 	background-size: 25px;
-	
+
 	border-width: 0;
 	cursor: pointer;
 }
@@ -191,10 +212,10 @@ h1, #settingsButton {
 	width: 100%;
 	min-width: 220px;
 	max-width: 440px;
-	
+
 	max-height: 650px;
 	padding: 1%;
-	
+
 	cursor: default;
 }
 
@@ -203,10 +224,9 @@ h1, #settingsButton {
 #hardLockHoursInputParent,
 #timeoutsInputParent,
 #destinationInputParent {
-	border: 2px solid black;
 	padding: 1%;
 	margin-top: 5px;
-	
+
 	font-size: 20px;
 }
 
@@ -235,10 +255,11 @@ h1, #settingsButton {
 	text-align: right;
 }
 
-#destinationInput{
+#destinationInput {
 	width: 98%;
 }
-#actionInputCustomCodeArea{
+
+#actionInputCustomCodeArea {
 	width: 98%;
 }
 
@@ -246,22 +267,46 @@ h1, #settingsButton {
 	margin-top: 5px;
 	width: 100%;
 	min-width: 150px;
-	
-	height: 43px;	
+
+	height: 43px;
 	font-size: 20px;
 	cursor: pointer;
 }
 
-#recordEditOK, #recordEditCancel {
+#recordEditOK,
+#recordEditCancel {
 	margin-top: 5px;
 	width: 49%;
 	min-width: 80px;
-	
-	height: 43px;	
+
+	height: 43px;
 	font-size: 20px;
 	cursor: pointer;
 }
 
 #recordEditCancel {
 	float: right;
+}
+
+.hidden-div {
+	display: none;
+	visibility: hidden;
+	position: absolute;
+	/* Nếu bạn muốn giữ nguyên diện tích của phần tử, hãy thêm width và height */
+	/* width: 0;
+	height: 0; */
+}
+
+.popup-container {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	align-items: center;
+	justify-content: center;
+	z-index: 999;
+	/* Giá trị z-index cao hơn */
 }

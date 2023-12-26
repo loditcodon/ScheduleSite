@@ -1,10 +1,9 @@
-function logX(){console.log.apply(this, Array.prototype.slice.call(arguments, 0));};
+function logX() { console.log.apply(this, Array.prototype.slice.call(arguments, 0)); };
 
 import { validateTimeString, validateTimeoutString } from './Misc.js';
 import { Record } from './Record.js';
 
-export class RecordStorage
-{
+export class RecordStorage {
 	/**
 	 * #properties
 	 * @type {!string} #properties.Language is name of preferred language (see TranslationProvider[0])
@@ -22,8 +21,7 @@ export class RecordStorage
 	/**
 	 * @param {!(chrome|browser)} storageProvider provider of the local storage functionality
 	 */
-	constructor(storageProvider = (typeof browser == 'undefined' ? chrome : browser))
-	{
+	constructor(storageProvider = (typeof browser == 'undefined' ? chrome : browser)) {
 		this.#storageProvider = storageProvider;
 	}
 
@@ -31,16 +29,13 @@ export class RecordStorage
 	 * Validates settings JSON
 	 * @param {string} jsonString
 	 */
-	validateExportedJSON(jsonString)
-	{
-		if(!jsonString)
-		{
+	validateExportedJSON(jsonString) {
+		if (!jsonString) {
 			return "Settings file is empty or generally invalid";
 		}
 
 		let arr = null;
-		try
-		{
+		try {
 			arr = Record.fromJSON(jsonString);
 		}
 		catch
@@ -48,30 +43,25 @@ export class RecordStorage
 			return "Settings file could not be parsed by JSON parser";
 		}
 
-		if(!(arr instanceof Array))
-		{
+		if (!(arr instanceof Array)) {
 			return "Settings file does not parse into an array";
 		}
 
-		for(let ii = 0; ii < arr.length; ++ii)
-		{
-			if(!validateTimeString(arr[ii].getSoftHours()))
-			{
-				return "Settings invalid at record " + (ii+1) +
-						" (regex '" + arr[ii].getRegex() +
-						"'):\nSoft locked time '" + arr[ii].getSoftHours() + "' is invalid";
+		for (let ii = 0; ii < arr.length; ++ii) {
+			if (!validateTimeString(arr[ii].getSoftHours())) {
+				return "Settings invalid at record " + (ii + 1) +
+					" (regex '" + arr[ii].getRegex() +
+					"'):\nSoft locked time '" + arr[ii].getSoftHours() + "' is invalid";
 			}
-			if(!validateTimeString(arr[ii].getHardHours()))
-			{
-				return "Settings invalid at record " + (ii+1) +
-						" (regex '" + arr[ii].getRegex() +
-						"'):\nHard locked time '" + arr[ii].getHardHours() + "' is invalid";
+			if (!validateTimeString(arr[ii].getHardHours())) {
+				return "Settings invalid at record " + (ii + 1) +
+					" (regex '" + arr[ii].getRegex() +
+					"'):\nHard locked time '" + arr[ii].getHardHours() + "' is invalid";
 			}
-			if(!validateTimeoutString(arr[ii].getTimeout()))
-			{
-				return "Settings invalid at record " + (ii+1) +
-						" (regex '" + arr[ii].getRegex() +
-						"'):\nTimeout string '" + arr[ii].getTimeout() + "' is invalid";
+			if (!validateTimeoutString(arr[ii].getTimeout())) {
+				return "Settings invalid at record " + (ii + 1) +
+					" (regex '" + arr[ii].getRegex() +
+					"'):\nTimeout string '" + arr[ii].getTimeout() + "' is invalid";
 			}
 		}
 
@@ -82,11 +72,10 @@ export class RecordStorage
 	 * Imports previously exported settings, reloads table.
 	 * @param {!string} jsonString - JSON representation of settings to be loaded
 	 */
-	async importSettings(jsonString)
-	{
+	async importSettings(jsonString) {
 		let valid = this.validateExportedJSON(jsonString);
-		if(valid !== true) return valid;
-		await this.#storageProvider.storage.local.set({ScheduleBlock_Websites:jsonString});
+		if (valid !== true) return valid;
+		await this.#storageProvider.storage.local.set({ ScheduleBlock_Websites: jsonString });
 		return true;
 	}
 
@@ -94,15 +83,13 @@ export class RecordStorage
 	 * Exports settings for later import.
 	 * @returns {!string} JSON representation of the current settings
 	 */
-	async exportSettings()
-	{
+	async exportSettings() {
 		let websites_result = await this.#storageProvider.storage.local.get(['ScheduleBlock_Websites']);
 		let websites_safe = (websites_result && websites_result.ScheduleBlock_Websites
-							 ? JSON.parse(websites_result.ScheduleBlock_Websites)
-							 : []);
+			? JSON.parse(websites_result.ScheduleBlock_Websites)
+			: []);
 
-		for(let ii = 0; ii < websites_safe.length; ++ii)
-		{
+		for (let ii = 0; ii < websites_safe.length; ++ii) {
 			delete websites_safe[ii].currentDuration;
 			delete websites_safe[ii].lastCheck;
 		}
@@ -114,22 +101,18 @@ export class RecordStorage
 	 * Get properties
 	 * @returns {{Language: !string, CheckFrequency: !number, Background: !string, LockScreenBase: !string}} this.#properies
 	 */
-	async getGeneralProperties()
-	{
-		if(this.#properties === undefined)
-		{
+	async getGeneralProperties() {
+		if (this.#properties === undefined) {
 			const res = await this.#storageProvider
-								.storage.local.get(['ScheduleBlock_Properties']);
+				.storage.local.get(['ScheduleBlock_Properties']);
 			this.#properties = (res && res.ScheduleBlock_Properties
-									? res.ScheduleBlock_Properties : {});
+				? res.ScheduleBlock_Properties : {});
 
-			if(!this.#properties.Language)
+			if (!this.#properties.Language)
 				this.#properties.Language = "english";
-			if(!this.#properties.CheckFrequency)
+			if (!this.#properties.CheckFrequency)
 				this.#properties.CheckFrequency = 15;
-			if(!this.#properties.Background)
-				this.#properties.Background = "#808080";
-			if(!this.#properties.LockScreenBase)
+			if (!this.#properties.LockScreenBase)
 				this.#properties.LockScreenBase = "https://www.iana.org";
 		}
 
@@ -141,11 +124,11 @@ export class RecordStorage
 	 * @param {{Language: !string, CheckFrequency: !number, Background: !string, LockScreenBase: !string}} this.#properies
 	 * @param {boolean} skipStorage whether to skip saving to storage or not
 	 */
-	async setGeneralProperties(newProperties, skipStorage = false){
+	async setGeneralProperties(newProperties, skipStorage = false) {
 		this.#properties = newProperties;
-		if(!skipStorage)
+		if (!skipStorage)
 			await this.#storageProvider
-					.storage.local.set({ScheduleBlock_Properties: newProperties});
+				.storage.local.set({ ScheduleBlock_Properties: newProperties });
 	}
 
 
@@ -153,12 +136,11 @@ export class RecordStorage
 	 * Get all records stored in the local storage
 	 * @returns {Array.<!Record>} array of Records stored in the local storage
 	 */
-	async getAll()
-	{
+	async getAll() {
 		const result = await this.#storageProvider.storage.local.get(['ScheduleBlock_Websites']);
 
 		return (result && result.ScheduleBlock_Websites
-				? Record.fromJSON(result.ScheduleBlock_Websites) : []);
+			? Record.fromJSON(result.ScheduleBlock_Websites) : []);
 	}
 
 	/**
@@ -166,14 +148,13 @@ export class RecordStorage
 	 * @param {!number} recordNumber
 	 * @returns {?Record} Record stored at the given index in the local storage, or null
 	 */
-	async getOne(recordNumber)
-	{
+	async getOne(recordNumber) {
 		const result = await this.#storageProvider.storage.local.get(['ScheduleBlock_Websites']);
 
 		const arr = (result && result.ScheduleBlock_Websites
-					 ? Record.fromJSON(result.ScheduleBlock_Websites) : []);
+			? Record.fromJSON(result.ScheduleBlock_Websites) : []);
 
-		if(recordNumber >= arr.length) return null;
+		if (recordNumber >= arr.length) return null;
 
 		return arr[recordNumber];
 	}
@@ -182,16 +163,15 @@ export class RecordStorage
 	 * Create new record in the local storage with given regex
 	 * @param {!string} regex
 	 */
-	async createNewRecord(regex)
-	{
+	async createNewRecord(regex) {
 		let result = await this.#storageProvider.storage.local.get(['ScheduleBlock_Websites']);
 		let arr = (result && result.ScheduleBlock_Websites
-						? Record.fromJSON(result.ScheduleBlock_Websites) : []);
+			? Record.fromJSON(result.ScheduleBlock_Websites) : []);
 
 		arr.push((new Record()).withRegex(regex));
 
 		await this.#storageProvider
-				.storage.local.set({ScheduleBlock_Websites:Record.toJSON(arr)});
+			.storage.local.set({ ScheduleBlock_Websites: Record.toJSON(arr) });
 	}
 
 	/**
@@ -200,20 +180,19 @@ export class RecordStorage
 	 * @param {!number} newRecordNumber new number
 	 * @returns {false} iff the operation failed
 	 */
-	async moveRecord(recordNumber, newRecordNumber)
-	{
+	async moveRecord(recordNumber, newRecordNumber) {
 		const result = await this.#storageProvider.storage.local.get(['ScheduleBlock_Websites']);
 		let arr = (result && result.ScheduleBlock_Websites
-						? Record.fromJSON(result.ScheduleBlock_Websites) : []);
+			? Record.fromJSON(result.ScheduleBlock_Websites) : []);
 
-		if(recordNumber >= arr.length) return false;
+		if (recordNumber >= arr.length) return false;
 
-		if(newRecordNumber < 0) newRecordNumber = 0;
+		if (newRecordNumber < 0) newRecordNumber = 0;
 		let tmp = arr.splice(recordNumber, 1);
 		arr.splice(newRecordNumber, 0, tmp[0]);
 
 		await this.#storageProvider
-				.storage.local.set({ScheduleBlock_Websites:Record.toJSON(arr)});
+			.storage.local.set({ ScheduleBlock_Websites: Record.toJSON(arr) });
 	}
 
 	/**
@@ -222,19 +201,18 @@ export class RecordStorage
 	 * @param {!Record} newValue new Record value
 	 * @returns {false} iff the operation failed
 	 */
-	async editRecord(recordNumber, newValue)
-	{
+	async editRecord(recordNumber, newValue) {
 		const result = await this.#storageProvider.storage.local.get(['ScheduleBlock_Websites']);
 
 		let arr = (result && result.ScheduleBlock_Websites
-						? Record.fromJSON(result.ScheduleBlock_Websites) : []);
+			? Record.fromJSON(result.ScheduleBlock_Websites) : []);
 
-		if(recordNumber >= arr.length) return false;
+		if (recordNumber >= arr.length) return false;
 
 		arr[recordNumber] = newValue;
 
 		await this.#storageProvider
-				.storage.local.set({ScheduleBlock_Websites:Record.toJSON(arr)});
+			.storage.local.set({ ScheduleBlock_Websites: Record.toJSON(arr) });
 	}
 
 	/**
@@ -242,18 +220,17 @@ export class RecordStorage
 	 * @param {!number} recordNumber number of the record
 	 * @returns {false} iff the operation failed
 	 */
-	async deleteRecord(recordNumber)
-	{
+	async deleteRecord(recordNumber) {
 		const result = await this.#storageProvider.storage.local.get(['ScheduleBlock_Websites']);
 
 		let arr = (result && result.ScheduleBlock_Websites
-						? Record.fromJSON(result.ScheduleBlock_Websites) : []);
-		if(arr.length == 0) return false;
+			? Record.fromJSON(result.ScheduleBlock_Websites) : []);
+		if (arr.length == 0) return false;
 
 		arr.splice(recordNumber, 1);
 
 		await this.#storageProvider
-				.storage.local.set({ScheduleBlock_Websites:Record.toJSON(arr)});
+			.storage.local.set({ ScheduleBlock_Websites: Record.toJSON(arr) });
 	}
 
 	/**
@@ -262,21 +239,19 @@ export class RecordStorage
 	 * @param {!boolean} softCheck
 	 * @returns {(false|string)} false iff not denied, action JS otherwise
 	 */
-	async testWebsite(urlAddress, softCheck)
-	{
+	async testWebsite(urlAddress, softCheck) {
 		let updatedElements = {};
 		let checkInterval = (await this.getGeneralProperties()).CheckFrequency * 1000;
 		let nowDate = new Date();
 
 		const result = await this.#storageProvider.storage.local.get(['ScheduleBlock_Websites']);
 		let arr = (result && result.ScheduleBlock_Websites
-						? Record.fromJSON(result.ScheduleBlock_Websites) : []);
+			? Record.fromJSON(result.ScheduleBlock_Websites) : []);
 
 		let testResult = false;
-		for(let ii = 0; ii < arr.length && testResult === false; ++ii)
-		{
+		for (let ii = 0; ii < arr.length && testResult === false; ++ii) {
 			let incremented = arr[ii].getIncrementedTimeout(urlAddress, nowDate, checkInterval);
-			if(incremented !== false)
+			if (incremented !== false)
 				arr[ii] = incremented;
 
 			//TODO: this will not work properly for
@@ -285,7 +260,7 @@ export class RecordStorage
 			testResult = arr[ii].testWebsite(urlAddress, softCheck, nowDate);
 		}
 
-		await this.#storageProvider.storage.local.set({ScheduleBlock_Websites:Record.toJSON(arr)});
+		await this.#storageProvider.storage.local.set({ ScheduleBlock_Websites: Record.toJSON(arr) });
 
 		return (testResult === false ? false : testResult[1]);
 	}
@@ -293,25 +268,22 @@ export class RecordStorage
 	/**
 	 *
 	 */
-	async getWebsiteUnlockTime(urlAddress)
-	{
+	async getWebsiteUnlockTime(urlAddress) {
 		let updatedElements = {};
 		let checkInterval = (await this.getGeneralProperties()).CheckFrequency * 1000;
 		let nowDate = new Date();
 
 		const result = await this.#storageProvider.storage.local.get(['ScheduleBlock_Websites']);
 		let arr = (result && result.ScheduleBlock_Websites
-						? Record.fromJSON(result.ScheduleBlock_Websites) : []);
+			? Record.fromJSON(result.ScheduleBlock_Websites) : []);
 
 		let maxResult = new Date(nowDate.getTime() - 1);
 
 		let testResult = false;
-		for(let ii = 0; ii < arr.length; ++ii)
-		{
+		for (let ii = 0; ii < arr.length; ++ii) {
 			testResult = arr[ii].testWebsite(urlAddress, true, nowDate);
 
-			if(testResult !== false && testResult[0] > maxResult)
-			{
+			if (testResult !== false && testResult[0] > maxResult) {
 				maxResult = testResult[0];
 			}
 		}

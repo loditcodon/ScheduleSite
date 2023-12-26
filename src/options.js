@@ -1,14 +1,16 @@
 /**
  * @file Describes behaviour of interactive elements of extension's options page.
- * @author sdasda7777
+ * @author khanhnguyenduy
  */
 
 import { Record } from "./Record.js";
 import { TranslationProvider } from "./TranslationProvider.js";
-import { validateURLInput,
-		 intToTime, timeToInt,
-		 validateTimeString, validateTimeStringInput,
-		 validateTimeoutString, validateTimeoutStringInput} from "./Misc.js";
+import {
+	validateURLInput,
+	intToTime, timeToInt,
+	validateTimeString, validateTimeStringInput,
+	validateTimeoutString, validateTimeoutStringInput
+} from "./Misc.js";
 
 /**
  * @type {!int} currentRecordNumber
@@ -24,19 +26,16 @@ let tp = new TranslationProvider();
 
 
 // Taken from https://sebhastian.com/javascript-format-string/
-if (!String.prototype.format)
-{
+if (!String.prototype.format) {
 	/*
 	 * Simple format functionality for strings, replaces "{\d+}" with arguments
 	 * @param {...*} arguments to be inserted at "{\d+}" (first at "{0}", etc.)
 	 * @returns receiver string with "{\d+}" replaced with arguments
 	 */
-	String.prototype.format = function ()
-	{
+	String.prototype.format = function () {
 		let args = arguments;
 		return this.replace(/{(\d+)}/g,
-			(match, number) =>
-			{
+			(match, number) => {
 				return typeof args[number] != "undefined" ? args[number] : match;
 			}
 		);
@@ -47,8 +46,7 @@ if (!String.prototype.format)
 /**
  * Applies text in currently selected language to all elements
  */
-function translateGUI()
-{
+function translateGUI() {
 	document.querySelector("#settingsButton").value = tp.getTranslatedString(3);
 	document.querySelector("#import").value = tp.getTranslatedString(103);
 	document.querySelector("#export").value = tp.getTranslatedString(104);
@@ -111,17 +109,15 @@ function translateGUI()
 /**
  * Adds new record into the storage, taking pattern from #newsite element.
  */
-function addSite()
-{
-	if(document.getElementById("newsite").value !== "")
-	{
+function addSite() {
+	if (document.getElementById("newsite").value !== "") {
 		let sending = chrome.runtime.sendMessage(
 			{
 				type: "ScheduleBlock_RecordStorage_CreateNewRecord",
 				regex: document.getElementById("newsite").value
 			}
 		);
-		document.getElementById("newsite").value= "";
+		document.getElementById("newsite").value = "";
 	}
 }
 
@@ -130,41 +126,38 @@ function addSite()
  * Constructs table from given data
  * @param {!string} JSON encoded array of Records
  */
-function contructViewCallback(data)
-{
+function contructViewCallback(data) {
 	let arr = Record.fromJSON(data);
 	let t = document.createElement("table");
 
 	// Generate table header row
 	let headerRow = document.createElement("tr");
 	let headerInnerTexts = [
-			tp.getTranslatedString(210),
-			tp.getTranslatedString(211),
-			tp.getTranslatedString(212),
-			tp.getTranslatedString(213),
-			tp.getTranslatedString(214),
-			tp.getTranslatedString(215),
-			tp.getTranslatedString(250)
+		tp.getTranslatedString(210),
+		tp.getTranslatedString(211),
+		tp.getTranslatedString(212),
+		tp.getTranslatedString(213),
+		tp.getTranslatedString(214),
+		tp.getTranslatedString(215),
+		tp.getTranslatedString(250)
 	];
 
-	for(let ii = 0; ii < headerInnerTexts.length; ++ii)
-	{
+	for (let ii = 0; ii < headerInnerTexts.length; ++ii) {
 		let tempHeader = document.createElement("th");
 		tempHeader.innerText = headerInnerTexts[ii];
 		headerRow.appendChild(tempHeader);
 	}
 	t.appendChild(headerRow);
-	
-	for(let ii = 0; ii < arr.length; ++ii)
-	{
+
+	for (let ii = 0; ii < arr.length; ++ii) {
 		let row = document.createElement("tr");
 
 		// Create order number control
 		let recordNumberCell = document.createElement("td");
 		let recordNumberBox = document.createElement("input");
-		recordNumberBox.id = "mvt"+ii;
+		recordNumberBox.id = "mvt" + ii;
 		recordNumberBox.type = "number";
-		recordNumberBox.value = (ii+1);
+		recordNumberBox.value = (ii + 1);
 		recordNumberBox.min = "1";
 		recordNumberBox.addEventListener("keyup", recordNumberBoxKeyEventHandler);
 		recordNumberCell.appendChild(recordNumberBox);
@@ -175,19 +168,19 @@ function contructViewCallback(data)
 			let pattern = document.createElement("td");
 			pattern.innerText = arr[ii].getRegex();
 			row.appendChild(pattern);
-			
+
 			let softhours = document.createElement("td");
 			softhours.innerHTML = arr[ii].getSoftHours().replace(/\|/g, "|<br>");
 			row.appendChild(softhours);
-			
+
 			let hardhours = document.createElement("td");
 			hardhours.innerHTML = arr[ii].getHardHours().replace(/\|/g, "|<br>");
 			row.appendChild(hardhours);
-			
+
 			let timeouts = document.createElement("td");
 			timeouts.innerHTML = arr[ii].getTimeout();
 			row.appendChild(timeouts);
-			
+
 			let des = document.createElement("td");
 			des.innerText = arr[ii].getAction();
 			row.appendChild(des);
@@ -207,7 +200,7 @@ function contructViewCallback(data)
 
 		t.appendChild(row);
 	}
-	
+
 	document.getElementById("display").innerHTML = "";
 	document.getElementById("display").appendChild(t);
 };
@@ -215,8 +208,7 @@ function contructViewCallback(data)
 /**
  * Requests data from the BackEnd, answer to which constructs the table
  */
-function constructView()
-{
+function constructView() {
 	let sending = chrome.runtime.sendMessage(
 		{
 			type: "ScheduleBlock_RefreshTable"
@@ -228,8 +220,7 @@ function constructView()
  * Opens edit menu for given Record
  * @param {!string} JSON encoded array containing the Record
  */
-function openRecordEditMenuCallback(data)
-{
+function openRecordEditMenuCallback(data) {
 	currentRecord = Record.fromJSON(data)[0];
 
 	// Set up the first four text inputs
@@ -245,38 +236,33 @@ function openRecordEditMenuCallback(data)
 	document.getElementById("actionInputCustomCodeArea").disabled = true;
 
 	// Set up record action
-	if(currentRecord.getAction() == "window.close();")
-	{
-		document.getElementById("actionInputClose").checked = true;	
+	if (currentRecord.getAction() == "window.close();") {
+		document.getElementById("actionInputClose").checked = true;
 	}
-	else if(currentRecord.getAction() == "window.location = '$ScheduleBlock_LockScreen$';")
-	{
+	else if (currentRecord.getAction() == "window.location = '$ScheduleBlock_LockScreen$';") {
 		document.getElementById("actionInputLockPage").checked = true;
 	}
-	else if(currentRecord.getAction().match(new RegExp("^window.location = '(?:[^\\']|\\.)*';$")))
-	{
+	else if (currentRecord.getAction().match(new RegExp("^window.location = '(?:[^\\']|\\.)*';$"))) {
 		document.getElementById("actionInputRedirect").checked = true;
 		document.getElementById("destinationInput").disabled = false;
 		document.getElementById("destinationInput").value
-				= currentRecord.getAction().substring(
-					currentRecord.getAction().indexOf("'") + 1,
-					currentRecord.getAction().length-2);
+			= currentRecord.getAction().substring(
+				currentRecord.getAction().indexOf("'") + 1,
+				currentRecord.getAction().length - 2);
 	}
-	else
-	{
+	else {
 		document.getElementById("actionInputCustom").checked = true;
 		document.getElementById("actionInputCustomCodeArea").disabled = false;
 		document.getElementById("actionInputCustomCodeArea").value = currentRecord.getAction();
 	}
-	
+
 	document.getElementById("recordEditOverlay").style.display = "flex";
 }
 
 /**
  * Requests data from the BackEnd, answer to which opens edit menu
  */
-function openRecordEditMenu(e)
-{
+function openRecordEditMenu(e) {
 	let sending = chrome.runtime.sendMessage(
 		{
 			type: "ScheduleBlock_OpenEditMenu",
@@ -289,17 +275,16 @@ function openRecordEditMenu(e)
  * Handles record number modification (i.e. reordering) using keyboard.
  * @param {KeyboardEvent} e - keyup event to be handled
  */
-function recordNumberBoxKeyEventHandler(e)
-{
+function recordNumberBoxKeyEventHandler(e) {
 	if (e.keyCode !== 13) return;
-	
+
 	e.preventDefault();
-	
+
 	let sending = chrome.runtime.sendMessage(
 		{
 			type: "ScheduleBlock_RecordStorage_MoveRecord",
 			id: parseInt(this.id.substr(3)),
-			newId: this.valueAsNumber-1
+			newId: this.valueAsNumber - 1
 		}
 	);
 }
@@ -307,47 +292,39 @@ function recordNumberBoxKeyEventHandler(e)
 /**
  * Handles behaviour of the pattern tester "widget".
  */
-function testRegex()
-{
+function testRegex() {
 	let re = document.getElementById("testerinput1").value;
 	let str = document.getElementById("testerinput2").value;
 
 	let testerresult = document.querySelector("#testerresult");
-	if(str.match(new RegExp(re)))
-	{
+	if (str.match(new RegExp(re))) {
 		console.log("Tester: '" + re + "' matches '" + str + "'");
 		testerresult.setAttribute("result", "matching");
 		testerresult.innerText = tp.getTranslatedString(406);
 	}
-	else
-	{
+	else {
 		console.log("Tester: '" + re + "' does not match '" + str + "'");
 		testerresult.setAttribute("result", "not_matching");
 		testerresult.innerText = tp.getTranslatedString(405);
 	}
 }
 
-export function main()
-{
+export function main() {
 	chrome.runtime.onMessage.addListener(
-		(message)=>{
+		(message) => {
 			console.log(message);
 
-			if(message.type === "ScheduleBlock_Options_SetTableData")
-			{
+			if (message.type === "ScheduleBlock_Options_SetTableData") {
 				contructViewCallback(message.data);
 			}
-			else if(message.type === "ScheduleBlock_Options_OpenEditMenu")
-			{
+			else if (message.type === "ScheduleBlock_Options_OpenEditMenu") {
 				openRecordEditMenuCallback(message.data);
 			}
-			else if(message.type === "ScheduleBlock_Options_Initialize")
-			{
+			else if (message.type === "ScheduleBlock_Options_Initialize") {
 				//console.log(message);
 
 				let tmpLangIndex = tp.getStringVersions(0).indexOf(message.properties.Language);
-				if(tmpLangIndex != -1)
-				{
+				if (tmpLangIndex != -1) {
 					document.querySelector("#langPicker").selectedIndex = tmpLangIndex;
 					tp.setLanguageIndex(tmpLangIndex);
 				}
@@ -360,14 +337,12 @@ export function main()
 
 				translateGUI();
 			}
-			else if(message.type === "ScheduleBlock_Options_ImportFailed")
-			{
+			else if (message.type === "ScheduleBlock_Options_ImportFailed") {
 				alert("Import failed because:\n" + message.reason);
 			}
-			else if(message.type === "ScheduleBlock_Options_Export")
-			{
+			else if (message.type === "ScheduleBlock_Options_Export") {
 				let a = document.createElement("a");
-				let file = new Blob([message.settings], {type: 'application/json'});
+				let file = new Blob([message.settings], { type: 'application/json' });
 				a.href = URL.createObjectURL(file);
 				a.download = "ScheduleBlockBackup_" + new Date().toISOString().slice(0, 10);
 				a.click();
@@ -394,7 +369,7 @@ export function main()
 	);
 	document.getElementById("import2").addEventListener("change",
 		() => {
-			if(document.getElementById("import2").files){
+			if (document.getElementById("import2").files) {
 				document.getElementById("import2").files[0].text()
 					.then(
 						(text) => {
@@ -425,14 +400,13 @@ export function main()
 	{
 		let picker = document.querySelector("#langPicker");
 
-		for (let lang in picker)
-		{
+		for (let lang in picker) {
 			picker.remove(lang);
 		}
 
 		let languages = tp.getStringVersions(0);
 
-		for (let lang in languages){
+		for (let lang in languages) {
 			let option = document.createElement('option');
 			option.value = lang;
 			option.innerHTML = languages[lang];
@@ -468,7 +442,7 @@ export function main()
 		let languageBackup, intervalBackup, colorBackup, lockScreenBaseBackup;
 		document.getElementById("settingsButton").addEventListener("click",
 			(e) => {
-				if(document.getElementById("settingsButton") !== event.target) return;
+				if (document.getElementById("settingsButton") !== event.target) return;
 
 				languageBackup = tp.getStringVersions(0)[document.getElementById("langPicker").selectedIndex];
 				intervalBackup = parseInt(document.getElementById("freqPicker").value);
@@ -479,21 +453,20 @@ export function main()
 			}
 		);
 
-		function resetSettingsBackups()
-		{
+		function resetSettingsBackups() {
 			document.getElementById("langPicker").value = tp.getStringVersions(0).indexOf(languageBackup);
 			document.getElementById("freqPicker").value = intervalBackup;
 			document.getElementById("colorPicker").value = colorBackup;
 			document.getElementById("lockScreenBase").value = lockScreenBaseBackup;
 
 			[document.getElementById("langPicker"),
-			 document.getElementById("freqPicker"),
-			 document.getElementById("colorPicker"),
-			 document.getElementById("lockScreenBase")
+			document.getElementById("freqPicker"),
+			document.getElementById("colorPicker"),
+			document.getElementById("lockScreenBase")
 			].forEach(
 				(i) => {
 					i.dispatchEvent(
-						new UIEvent('change', {'view': window, 'bubbles': true, 'cancelable': true})
+						new UIEvent('change', { 'view': window, 'bubbles': true, 'cancelable': true })
 					);
 				}
 			);
@@ -506,7 +479,7 @@ export function main()
 
 		document.getElementById("settingsChangeOverlay").addEventListener("click",
 			(e) => {
-				if(document.getElementById("settingsChangeOverlay") !== event.target) return;
+				if (document.getElementById("settingsChangeOverlay") !== event.target) return;
 
 				resetSettingsBackups();
 				document.getElementById("settingsChangeOverlay").style.display = "none";
@@ -522,7 +495,7 @@ export function main()
 
 		document.getElementById("settingsMenuOK").addEventListener("click",
 			(e) => {
-				if(!validateURLInput(document.getElementById("lockScreenBase"), tp))
+				if (!validateURLInput(document.getElementById("lockScreenBase"), tp))
 					return;
 
 				let newLangIndex = document.getElementById("langPicker").selectedIndex;
@@ -530,7 +503,7 @@ export function main()
 				let newCheckFrequency = parseInt(document.getElementById("freqPicker").value);
 				let newBackground = document.getElementById("colorPicker").value;
 				let newLockScreenBase = document.getElementById("lockScreenBase").value;
-			
+
 				let sending = chrome.runtime.sendMessage(
 					{
 						type: "ScheduleBlock_SaveGeneralProperties",
@@ -551,9 +524,8 @@ export function main()
 	{
 		let enableActionInputs = (bits) => {
 			let inputs = [document.getElementById("destinationInput"),
-							document.getElementById("actionInputCustomCodeArea")];
-			for(let ii=0; ii < inputs.length; ++ii)
-			{
+			document.getElementById("actionInputCustomCodeArea")];
+			for (let ii = 0; ii < inputs.length; ++ii) {
 				inputs[ii].disabled = ((bits >> ii) & 1) !== 1;
 			}
 		};
@@ -581,8 +553,8 @@ export function main()
 
 		document.getElementById("recordEditOverlay").addEventListener("click",
 			(e) => {
-				if(document.getElementById("recordEditOverlay") !== event.target) return;
-				
+				if (document.getElementById("recordEditOverlay") !== event.target) return;
+
 				document.getElementById("recordEditOverlay").style.display = "none";
 			}
 		);
@@ -595,8 +567,7 @@ export function main()
 
 		document.getElementById("recordEditDelete").addEventListener("click",
 			(e) => {
-				if(confirm(tp.getTranslatedString(305).format(currentRecord.toString())))
-				{
+				if (confirm(tp.getTranslatedString(305).format(currentRecord.toString()))) {
 					let sending = chrome.runtime.sendMessage(
 						{
 							type: "ScheduleBlock_RecordStorage_DeleteRecord",
@@ -617,7 +588,7 @@ export function main()
 			(e) => validateTimeStringInput(e, tp)
 		);
 		document.getElementById("timeoutStringInput").addEventListener("change",
-			(e)=> validateTimeoutStringInput(e, tp)
+			(e) => validateTimeoutStringInput(e, tp)
 		);
 
 		document.getElementById("recordEditOK").addEventListener("click",
@@ -626,9 +597,9 @@ export function main()
 				let hardhoursInput = document.getElementById("hardLockHoursInput");
 				let timeoutStringInput = document.getElementById("timeoutStringInput");
 
-				if(!validateTimeStringInput({target:softhoursInput}, tp)
-				   || !validateTimeStringInput({target:hardhoursInput}, tp)
-				   || !validateTimeoutStringInput({target:timeoutStringInput}, tp))
+				if (!validateTimeStringInput({ target: softhoursInput }, tp)
+					|| !validateTimeStringInput({ target: hardhoursInput }, tp)
+					|| !validateTimeoutStringInput({ target: timeoutStringInput }, tp))
 					return;
 
 				let sending = chrome.runtime.sendMessage(
@@ -642,12 +613,12 @@ export function main()
 									softhoursInput.value, hardhoursInput.value,
 									timeoutStringInput.value,
 									(document.getElementById("actionInputClose").checked
-									 ? "window.close();"
-									 : document.getElementById("actionInputLockPage").checked
-									   ? "window.location = '$ScheduleBlock_LockScreen$';"
-									   : document.getElementById("actionInputRedirect").checked
-									     ? "window.location = '" + document.getElementById("destinationInput").value + "';"
-										 : document.getElementById("actionInputCustomCodeArea").value
+										? "window.close();"
+										: document.getElementById("actionInputLockPage").checked
+											? "window.location = '$ScheduleBlock_LockScreen$';"
+											: document.getElementById("actionInputRedirect").checked
+												? "window.location = '" + document.getElementById("destinationInput").value + "';"
+												: document.getElementById("actionInputCustomCodeArea").value
 									)
 								)
 							]
