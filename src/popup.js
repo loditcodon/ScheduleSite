@@ -392,6 +392,12 @@ document.getElementById("blockIcon").addEventListener("click", function () {
       type: "ScheduleBlock_RecordStorage_CreateNewRecord",
       regex: currentDomain,
     });
+    
+    // Get the current tab's ID
+    const tabId = activeTab[0].id;
+
+    // Update the current tab's URL to the specified HTML page
+    chrome.tabs.update(tabId, { url: "../src/options.html" });
   });
 });
 

@@ -139,7 +139,8 @@ function contructViewCallback(data) {
 		tp.getTranslatedString(213),
 		tp.getTranslatedString(214),
 		tp.getTranslatedString(215),
-		tp.getTranslatedString(250)
+		tp.getTranslatedString(250),
+		tp.getTranslatedString(456)
 	];
 
 	for (let ii = 0; ii < headerInnerTexts.length; ++ii) {
@@ -197,6 +198,18 @@ function contructViewCallback(data) {
 		editButton.addEventListener("click", openRecordEditMenu);
 		editCell.appendChild(editButton);
 		row.appendChild(editCell);
+
+		// Create delete button
+		let deleteCell = document.createElement("td");
+		deleteCell.className = "deleteCell";
+		let deleteButton = document.createElement("input");
+		deleteButton.id = "delete" + ii;
+		deleteButton.type = "button";
+		deleteButton.className = "deleteButton"
+		deleteButton.value = "";
+		deleteButton.addEventListener("click", deleteButtonHandle);
+		deleteCell.appendChild(deleteButton);
+		row.appendChild(deleteCell);
 
 		t.appendChild(row);
 	}
@@ -269,6 +282,22 @@ function openRecordEditMenu(e) {
 			id: (currentRecordNumber = parseInt(this.id.substr(4)))
 		}
 	);
+}
+
+/**
+ * Requests data from the BackEnd, answer to which opens edit menu
+ */
+function deleteButtonHandle(e) {
+    const recordId = parseInt(this.id.substr(6));
+
+    if (confirm(tp.getTranslatedString(305).format(recordId.toString()))) {
+        let sending = chrome.runtime.sendMessage(
+            {
+                type: "ScheduleBlock_RecordStorage_DeleteRecord",
+                id: recordId
+            }
+        );
+    }
 }
 
 /**

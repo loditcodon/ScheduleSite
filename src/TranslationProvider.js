@@ -125,7 +125,8 @@ export class TranslationProvider {
 
 			"Dobrý den, toto je nejméně rušivý způsob, jakým nás napadlo Vás kontaktovat.<br/><br/>" +
 			"Chceme, abyste věděli, že nám záleží na zážitku z používání tohoto malého rozšíření. Pokud by Vás napadl jakýkoli způsob, kterým bychom ho mohli vylepšit, abychom Vám usnadnili život, neváhejte nás kontaktovat, ať už v recenzi, nebo vytvořením Issue na <a href=\"https://github.com/sdasda7777/ScheduleBlock\">stránce projektu na GitHubu</a>. To samé platí o jakýchkoli chybách, které můžete najít.<br/><br/>" +
-			"V poslední řadě chceme, abyste věděli, že ve Vás věříme."]
+			"V poslední řadě chceme, abyste věděli, že ve Vás věříme."],
+			456: ["Delete"]
 		};
 
 		return INTERFACE_STRINGS[messageCode];
