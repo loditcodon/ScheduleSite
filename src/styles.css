@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: black;
-  opacity: 1; /* Firefox */
-}
-
-input[type=number] {
-    width: 40px;
-=======
 ::placeholder {
 	/* Chrome, Firefox, Opera, Safari 10.1+ */
 	opacity: 1;
@@ -15,32 +6,15 @@ input[type=number] {
 
 input[type=number] {
 	width: 40px;
->>>>>>> origin/main
 }
 
 #newsite {
 	width: 75%;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/main
 #newsiteadd {
 	cursor: pointer;
 }
 
-<<<<<<< HEAD
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-
-.display >> table {
-	width: 75%;
-}
-
-td, th {
-=======
 table,
 th,
 td {
@@ -53,7 +27,6 @@ td {
 
 td,
 th {
->>>>>>> origin/main
 	padding: 3px 5px;
 }
 
@@ -66,12 +39,8 @@ h1 {
 	font-size: 35px;
 }
 
-<<<<<<< HEAD
-h1, #settingsButton {
-=======
 h1,
 #settingsButton {
->>>>>>> origin/main
 	display: inline;
 }
 
@@ -80,19 +49,11 @@ h1,
 	margin-top: 5px;
 	margin-right: 5px;
 	float: right;
-<<<<<<< HEAD
-	
-	font-size: 20px;	
-	background: url('../images/cog.png') left center no-repeat;
-	background-size: 30px;
-	padding-left: 35px;	
-=======
 
 	font-size: 20px;
 	background: url('../images/cog.png') left center no-repeat;
 	background-size: 30px;
 	padding-left: 35px;
->>>>>>> origin/main
 	cursor: pointer;
 }
 
@@ -105,26 +66,11 @@ h1,
 .widget {
 	margin: 5px;
 	padding: 5px;
-<<<<<<< HEAD
-	
-	border: 2px solid black;
-=======
-
->>>>>>> origin/main
 }
 
 #tester {
 	max-width: 400px;
 }
-<<<<<<< HEAD
-#testerinput1, #testerinput2 {
-	margin-bottom: 5px;
-	width: 96.8%;
-}
-#testerresult {
-	font-weight: bold;
-}
-=======
 
 #testerinput1,
 #testerinput2 {
@@ -136,7 +82,6 @@ h1,
 	font-weight: bold;
 }
 
->>>>>>> origin/main
 #testerbutton {
 	width: 99%;
 	margin-top: 5px;
@@ -146,12 +91,8 @@ h1,
 #personalMessage {
 	width: 400px;
 }
-<<<<<<< HEAD
-#personalMessage > p {
-=======
 
 #personalMessage>p {
->>>>>>> origin/main
 	font-size: 15px;
 	text-indent: 2em;
 }
@@ -160,12 +101,6 @@ h1,
 /* Source: https://www.w3schools.com/howto/howto_css_overlay.asp */
 #settingsChangeOverlay,
 #recordEditOverlay {
-<<<<<<< HEAD
-	position: fixed; /* Sit on top of the page content */
-	display: none; /* Hidden by default */
-	width: 100%; /* Full width (cover the whole page) */
-	height: 100%; /* Full height (cover the whole page) */
-=======
 	position: fixed;
 	/* Sit on top of the page content */
 	display: none;
@@ -174,45 +109,20 @@ h1,
 	/* Full width (cover the whole page) */
 	height: 100%;
 	/* Full height (cover the whole page) */
->>>>>>> origin/main
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
-<<<<<<< HEAD
-	background-color: rgba(0,0,0,0.5); /* Black background with opacity */
-	z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-	cursor: pointer; /* Add a pointer on hover */
-		
-=======
 	/* Black background with opacity */
 	z-index: 2;
 	/* Specify a stack order in case you're using a different order for other elements */
 	cursor: pointer;
 	/* Add a pointer on hover */
 
->>>>>>> origin/main
 	justify-content: center;
 }
 
 .settingsFullsizeParent {
-<<<<<<< HEAD
-	border: 2px solid black;
-	padding: 5px;
-	margin-top: 5px;
-	
-	font-size: 20px;
-}
-.settingsFullsizeParent > p {
-	font-size: 12px;
-}
-#langPickerLabel,
-#freqPickerLabel,
-#colorPickerLabel{
-	padding-bottom: 1px;
-	margin-right: 2px;
-}
-=======
 	padding: 5px;
 	margin-top: 5px;
 
@@ -230,38 +140,21 @@ h1,
 	margin-right: 2px;
 }
 
->>>>>>> origin/main
 #langPicker {
 	margin-top: 10px;
 	width: 100px;
 	cursor: pointer;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/main
 #freqPicker {
 	margin-top: 10px;
 	width: 100px;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/main
 #colorPicker {
 	margin-top: 4px;
 	width: 100px;
 	cursor: pointer;
 }
 
-<<<<<<< HEAD
-#import, #export,
-#settingsMenuOK, #settingsMenuCancel {
-	height: 43px;	
-	font-size: 20px;
-	cursor: pointer;
-	
-=======
 #import,
 #export,
 #settingsMenuOK,
@@ -270,7 +163,6 @@ h1,
 	font-size: 20px;
 	cursor: pointer;
 
->>>>>>> origin/main
 	margin-top: 5px;
 	width: 49%;
 	min-width: 80px;
@@ -286,17 +178,10 @@ h1,
 	width: 100%;
 	min-width: 220px;
 	max-width: 440px;
-<<<<<<< HEAD
-	
-	max-height: 775px;
-	padding: 5px;
-	
-=======
 
 	max-height: 775px;
 	padding: 5px;
 
->>>>>>> origin/main
 	cursor: default;
 }
 
@@ -313,9 +198,6 @@ h1,
 	height: 30px;
 	background: url('../images/pencil.png') left center no-repeat;
 	background-size: 25px;
-<<<<<<< HEAD
-	
-=======
 
 	border-width: 0;
 	cursor: pointer;
@@ -327,7 +209,6 @@ h1,
 	background: url('../images/delete-button.png') left center no-repeat;
 	background-size: 25px;
 
->>>>>>> origin/main
 	border-width: 0;
 	cursor: pointer;
 }
@@ -337,17 +218,10 @@ h1,
 	width: 100%;
 	min-width: 220px;
 	max-width: 440px;
-<<<<<<< HEAD
-	
-	max-height: 650px;
-	padding: 1%;
-	
-=======
 
 	max-height: 650px;
 	padding: 1%;
 
->>>>>>> origin/main
 	cursor: default;
 }
 
@@ -356,16 +230,9 @@ h1,
 #hardLockHoursInputParent,
 #timeoutsInputParent,
 #destinationInputParent {
-<<<<<<< HEAD
-	border: 2px solid black;
-	padding: 1%;
-	margin-top: 5px;
-	
-=======
 	padding: 1%;
 	margin-top: 5px;
 
->>>>>>> origin/main
 	font-size: 20px;
 }
 
@@ -394,18 +261,11 @@ h1,
 	text-align: right;
 }
 
-<<<<<<< HEAD
-#destinationInput{
-	width: 98%;
-}
-#actionInputCustomCodeArea{
-=======
 #destinationInput {
 	width: 98%;
 }
 
 #actionInputCustomCodeArea {
->>>>>>> origin/main
 	width: 98%;
 }
 
@@ -413,25 +273,12 @@ h1,
 	margin-top: 5px;
 	width: 100%;
 	min-width: 150px;
-<<<<<<< HEAD
-	
-	height: 43px;	
-=======
 
 	height: 43px;
->>>>>>> origin/main
 	font-size: 20px;
 	cursor: pointer;
 }
 
-<<<<<<< HEAD
-#recordEditOK, #recordEditCancel {
-	margin-top: 5px;
-	width: 49%;
-	min-width: 80px;
-	
-	height: 43px;	
-=======
 #recordEditOK,
 #recordEditCancel {
 	margin-top: 5px;
@@ -439,7 +286,6 @@ h1,
 	min-width: 80px;
 
 	height: 43px;
->>>>>>> origin/main
 	font-size: 20px;
 	cursor: pointer;
 }
@@ -447,8 +293,6 @@ h1,
 #recordEditCancel {
 	float: right;
 }
-<<<<<<< HEAD
-=======
 
 .hidden-div {
 	display: none;
@@ -472,4 +316,3 @@ h1,
 	z-index: 999;
 	/* Giá trị z-index cao hơn */
 }
->>>>>>> origin/main

@@ -1,31 +1,5 @@
 <!DOCTYPE html>
 <html>
-<<<<<<< HEAD
-  <head>
-    <link rel="stylesheet" href="styles.css">
-	<title>ScheduleBlock</title>
-	<meta charset="UTF-8">
-  </head>
-  <body>
-    <div id="topBar">
-		<h1>ScheduleBlock</h1>
-		<input type="button" id="settingsButton" value="Settings">
-	</div>
-	
-	<div id="widgetParent">
-		<div class="widget">
-			<p id="tableHint">If you're reading this, translations must be broken :(</p>
-			<div id="display"></div>
-			<br>
-			<div id="input">
-				<input type="text" id="newsite" name="newsite" placeholder="Regex that matches the site you want to be blocked">
-				<input type="button" id="newsiteadd" value="Add to the list">
-			</div>
-		</div>
-		
-		
-		<div class="widget" id="tester">
-=======
 
 <head>
 	<link rel="stylesheet" href="styles.css">
@@ -221,7 +195,6 @@
 
 
 		<div class="hidden-div" class="widget" id="tester">
->>>>>>> origin/main
 			<h2 id="testertitle">Pattern Tester</h2>
 			<input type="text" id="testerinput1" name="testerinput1" placeholder="Regex pattern to test">
 			<input type="text" id="testerinput2" name="testerinput2" placeholder="String to test against">
@@ -229,19 +202,6 @@
 			<span id="testerresult" result="matching">Matching</span>
 			<input type="button" id="testerbutton" value="Check">
 		</div>
-<<<<<<< HEAD
-		
-		
-		<div class="widget" id="personalMessage">
-			<h2 id="personalmessagetitle">Personal Message</h2>
-			<p id="personalmessagecontent">Hey, this is the least intrusive way we could think of contacting you.<br/><br/>
-			We want you to know that we deeply care about your experience with this little extension. If there is any way we could improve it to make your life easier, let us know, either in a review or by creating an issue on project's GitHub page. Same goes for any bugs you might find.<br/><br/>
-			Last but not least, we believe in you, and you've got this.</p>
-		</div>
-	</div>
-	
-	<div id="settingsChangeOverlay">
-=======
 
 
 		<div class="hidden-div" class="widget" id="personalMessage">
@@ -256,25 +216,15 @@
 	</div>
 
 	<div class="hidden-div" id="settingsChangeOverlay">
->>>>>>> origin/main
 		<div id="settingsMenu">
 			<input type="button" id="export" value="Export settings">
 			<input type="button" id="import" value="Import settings">
 			<input type="file" id="import2" name="import2" style="display: none;" />
-<<<<<<< HEAD
-			
-=======
-
->>>>>>> origin/main
 			<div id="langPickerParent" class="settingsFullsizeParent">
 				<label for="langPicker" id="langPickerLabel">Language:</label>
 				</br>
 				<select id="langPicker">
-<<<<<<< HEAD
-				  <option value="lang">language</option>
-=======
 					<option value="lang">language</option>
->>>>>>> origin/main
 				</select>
 			</div>
 			<div id="freqPickerParent" class="settingsFullsizeParent">
@@ -285,38 +235,19 @@
 			<div id="colorPickerParent" class="settingsFullsizeParent">
 				<label for="colorPicker" id="colorPickerLabel">Background color:</label>
 				</br>
-<<<<<<< HEAD
-				<input type="color" id="colorPicker" value="#808080">
-=======
 				<input type="color" id="colorPicker">
->>>>>>> origin/main
 			</div>
 			<div id="lockScreenBaseParent" class="settingsFullsizeParent">
 				<label for="lockScreenBase" id="lockScreenBaseLabel">Lock Screen Base URL:</label>
 				</br>
-<<<<<<< HEAD
-				<p id="lockScreenBaseNote">Note: This should be a domain you have large amount of trust in. It also should not be in your block list and preferably should be lightweight. Honestly, unless you have a really good reason just leave it as it is (https://www.iana.org).</p>
-				<input id="lockScreenBase" name="lockScreenBase" type="url" required/>
-=======
 				<p id="lockScreenBaseNote">Note: This should be a domain you have large amount of trust in. It also
 					should not be in your block list and preferably should be lightweight. Honestly, unless you have a
 					really good reason just leave it as it is (https://www.iana.org).</p>
 				<input id="lockScreenBase" name="lockScreenBase" type="url" required />
->>>>>>> origin/main
 			</div>
 			<div id="creditsParent" class="settingsFullsizeParent">
 				<label id="creditsLabel">Credits:</label>
 				</br>
-<<<<<<< HEAD
-				- <a href="https://github.com/sdasda7777">sdasda7777</a> (<a href="https://github.com/sdasda7777/ScheduleBlock">programming</a>, under GPL-3.0)
-				</br>
-				- <a href="https://lorcblog.blogspot.com/">Lorc</a> 
-					(<a href="https://game-icons.net/1x1/lorc/cog.html">Cog icon</a>, 
-					under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>)
-				</br>
-				- <a href="https://delapouite.com/">Delapouite</a> 
-					(<a href="https://game-icons.net/1x1/delapouite/pencil.html">Pencil icon</a>, under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>)
-=======
 				- <a href="https://github.com/sdasda7777">sdasda7777</a> (<a
 					href="https://github.com/sdasda7777/ScheduleBlock">programming</a>, under GPL-3.0)
 				</br>
@@ -327,28 +258,16 @@
 				- <a href="https://delapouite.com/">Delapouite</a>
 				(<a href="https://game-icons.net/1x1/delapouite/pencil.html">Pencil icon</a>, under <a
 					href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>)
->>>>>>> origin/main
 			</div>
 			<div class="settingsFullsizeParent">
 				<label id="creditsLabel">Other:</label>
 				</br>
 				<a href="../SpecRunner.html">Run tests</a>
 			</div>
-<<<<<<< HEAD
-			
-=======
-
->>>>>>> origin/main
 			<input type="button" id="settingsMenuOK" value="OK">
 			<input type="button" id="settingsMenuCancel" value="Cancel">
 		</div>
 	</div>
-<<<<<<< HEAD
-	
-	<div id="recordEditOverlay">
-		<div id="recordChangeMenu">
-		
-=======
 
 	<div id="recordEditOverlay">
 
@@ -445,7 +364,6 @@
 
 		<div class="hidden-div" id="recordChangeMenu">
 
->>>>>>> origin/main
 			<div id="patternInputParent">
 				<label for="patternInput" id="patternInputLabel">Pattern:</label>
 				</br>
@@ -461,40 +379,11 @@
 				</br>
 				<input type="text" id="hardLockHoursInput" value="hardhours-here">
 			</div>
-<<<<<<< HEAD
-			
-=======
-
->>>>>>> origin/main
 			<div id="timeoutsInputParent">
 				<label for="timeoutsInputParent" id="timeoutsLabel">Timeouts:</label>
 				</br>
 				<input type="text" id="timeoutStringInput" value="timeouts-here">
 			</div>
-<<<<<<< HEAD
-			
-			<div id="destinationInputParent">
-				<label for="destinationInput" id="destinationLabel">Action:</label>
-				</br>
-				
-				<input type="radio" id="actionInputClose" name="actionInput" value="Close">
-					<label for="actionInputClose" id="actionInputCloseLabel">Close window</label><br>
-					
-				<input type="radio" id="actionInputLockPage" name="actionInput" value="Close">
-					<label for="actionInputLockPage" id="actionInputLockPageLabel">Redirect to lock page</label><br>
-				
-				<input type="radio" id="actionInputRedirect" name="actionInput" value="Redirect">
-					<label for="actionInputRedirect" id="actionInputRedirectLabel">Redirect to: </label>
-					<input type="text" id="destinationInput" value="destination-here"><br>
-				
-				<input type="radio" id="actionInputCustom" name="actionInput" value="Custom Code">
-					<label for="actionInputCustom" id="actionInputCustomCodeLabel">Custom code:</label>
-					<textarea id="actionInputCustomCodeArea">console.log("Hello world");</textarea>
-				
-				
-			</div>
-			
-=======
 
 			<div id="destinationInputParent">
 				<label for="destinationInput" id="destinationLabel">Action:</label>
@@ -517,23 +406,11 @@
 
 			</div>
 
->>>>>>> origin/main
 			<input type="button" id="recordEditDelete" value="Delete">
 			<input type="button" id="recordEditOK" value="OK">
 			<input type="button" id="recordEditCancel" value="Cancel">
 		</div>
 	</div>
-<<<<<<< HEAD
-  </body>
-  <style type="text/css" id="rebuildPersistantStylesheet">
-	* {
-		background-color: #808080;
-	}
-  </style>
-  <script src="options_loader.js"></script>
-  
-</html>
-=======
 </body>
 <style type="text/css" id="rebuildPersistantStylesheet">
 	* {}
@@ -544,4 +421,3 @@
 
 
 </html>
->>>>>>> origin/main
