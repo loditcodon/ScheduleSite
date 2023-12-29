@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<<<<<<< HEAD
   <head>
     <link rel="stylesheet" href="styles.css">
 	<title>ScheduleBlock</title>
@@ -24,6 +25,203 @@
 		
 		
 		<div class="widget" id="tester">
+=======
+
+<head>
+	<link rel="stylesheet" href="styles.css">
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+	<title>List Block</title>
+	<meta content="" name="description">
+	<meta content="" name="keywords">
+
+	<!-- Favicons -->
+	<link href="assets/img/favicon.png" rel="icon">
+	<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+	<!-- Google Fonts -->
+	<link href="https://fonts.gstatic.com" rel="preconnect">
+	<link
+		href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+		rel="stylesheet">
+
+	<!-- Vendor CSS Files -->
+	<link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+	<link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+	<link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+	<link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+	<link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+	<link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+	<!-- Template Main CSS File -->
+	<link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+	<!-- ======= Header ======= -->
+	<header id="header" class="header fixed-top d-flex align-items-center">
+
+		<div class="d-flex align-items-center justify-content-between">
+			<a href="index.html" class="logo d-flex align-items-center">
+				<img src="assets/img/logo.png" alt="">
+				<span class="d-none d-lg-block">Block Site</span>
+			</a>
+			<i class="bi bi-list toggle-sidebar-btn"></i>
+		</div><!-- End Logo -->
+
+		<!-- <div class="search-bar">
+			<form class="search-form d-flex align-items-center" method="POST" action="#">
+				<input type="text" name="query" placeholder="Search" title="Enter search keyword">
+				<button type="submit" title="Search"><i class="bi bi-search"></i></button>
+			</form>
+		</div> -->
+
+		<nav class="header-nav ms-auto">
+			<ul class="d-flex align-items-center">
+
+				<li class="nav-item d-block d-lg-none">
+					<a class="nav-link nav-icon search-bar-toggle " href="#">
+						<i class="bi bi-search"></i>
+					</a>
+				</li><!-- End Search Icon-->
+
+				<li class="nav-item dropdown">
+
+					<!-- <a id="settingsButton" class="nav-link nav-icon" href="#" data-bs-toggle="dropdown"> -->
+					<!-- <i class="bi bi-gear"></i> -->
+					</a><!-- End Messages Icon -->
+
+					<ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
+
+
+					</ul><!-- End Messages Dropdown Items -->
+
+				</li><!-- End Messages Nav -->
+
+			</ul>
+		</nav><!-- End Icons Navigation -->
+
+	</header><!-- End Header -->
+
+
+	<!-- Popup-->
+	<div class="popup-container" id="popupContainer">
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Add domain block</h5>
+
+				<!-- Vertical Form -->
+				<form class="row g-3">
+					<div class="col-12">
+						<label for="inputNanme4" class="form-label">Domain</label>
+						<input id="newsite" type="text" class="form-control" id="inputText">
+					</div>
+					<div class="text-center">
+						<button id="newsiteadd" type="submit" class="btn btn-primary">Submit</button>
+						<button type="reset" class="btn btn-secondary">Reset</button>
+					</div>
+				</form><!-- Vertical Form -->
+
+			</div>
+		</div>
+	</div>
+	<!-- ======= Sidebar ======= -->
+	<aside id="sidebar" class="sidebar">
+
+		<ul class="sidebar-nav" id="sidebar-nav">
+
+			<li class="nav-item">
+				<a class="nav-link collapsed" href="options.html">
+					<i class="bi bi-grid"></i>
+					<span>Dashboard</span>
+				</a>
+			</li><!-- End Dashboard Nav -->
+
+			<li class="nav-item">
+				<a class="nav-link collapsed" href="options.html">
+					<i class="bi bi-archive-fill"></i>
+					<span>Custom profile</span>
+				</a>
+			</li><!-- End Dashboard Nav -->
+
+			<li class="nav-item">
+				<a class="nav-link collapsed" href="charts-chartjs.html">
+					<i class="bi bi-bar-chart-fill"></i>
+					<span>Statistical</span>
+				</a>
+			</li><!-- End Dashboard Nav -->
+
+		</ul>
+
+	</aside><!-- End Sidebar-->
+
+	<main id="main" class="main">
+
+		<div class="pagetitle">
+			<h1>Restricted List</h1>
+		</div><!-- End Page Title -->
+
+		<div class="row mb-3">
+			<!-- <div class="col-sm-8">
+        <input id="newsite" type="text" class="form-control" id="inputText">
+      </div> -->
+			<div class="col-sm-2 ml-auto">
+				<!-- <button id="newsiteadd" onclick="openPopup()" type="submit" class="btn btn-primary btn-block">Add Block</button> -->
+				<button id="newsiteadd1" class="btn btn-primary btn-block">Add Block</button>
+			</div>
+		</div>
+
+
+		<section class="section">
+			<div class="row">
+				<div class="col-lg-12">
+
+					<div class="card">
+						<div class="card-body">
+
+							<!-- Table with stripped rows -->
+							<div id="display" class="table datatable"></div>
+
+							<!-- End Table with stripped rows -->
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+	</main><!-- End #main -->
+
+
+	<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+			class="bi bi-arrow-up-short"></i></a>
+
+
+
+	<!-- //// -->
+	<div class="hidden-div" id="topBar">
+		<h1>ScheduleBlock</h1>
+		<input class="hidden-div" type="button" id="settingsButton" value="Settings">
+	</div>
+
+	<div class="hidden-div" id="widgetParent">
+		<div class="widget">
+			<p class="hidden-div" id="tableHint">If you're reading this, translations must be broken :(</p>
+			<div class="hidden-div" id="display"></div>
+			<br>
+			<div id="input">
+				<input type="text" id="newsite" name="newsite"
+					placeholder="Regex that matches the site you want to be blocked">
+				<input class="hidden-div" type="button" id="newsiteadd" value="Add to the list">
+			</div>
+		</div>
+
+
+		<div class="hidden-div" class="widget" id="tester">
+>>>>>>> origin/main
 			<h2 id="testertitle">Pattern Tester</h2>
 			<input type="text" id="testerinput1" name="testerinput1" placeholder="Regex pattern to test">
 			<input type="text" id="testerinput2" name="testerinput2" placeholder="String to test against">
@@ -31,6 +229,7 @@
 			<span id="testerresult" result="matching">Matching</span>
 			<input type="button" id="testerbutton" value="Check">
 		</div>
+<<<<<<< HEAD
 		
 		
 		<div class="widget" id="personalMessage">
@@ -42,16 +241,40 @@
 	</div>
 	
 	<div id="settingsChangeOverlay">
+=======
+
+
+		<div class="hidden-div" class="widget" id="personalMessage">
+			<h2 id="personalmessagetitle">Personal Message</h2>
+			<p id="personalmessagecontent">Hey, this is the least intrusive way we could think of contacting
+				you.<br /><br />
+				We want you to know that we deeply care about your experience with this little extension. If there is
+				any way we could improve it to make your life easier, let us know, either in a review or by creating an
+				issue on project's GitHub page. Same goes for any bugs you might find.<br /><br />
+				Last but not least, we believe in you, and you've got this.</p>
+		</div>
+	</div>
+
+	<div class="hidden-div" id="settingsChangeOverlay">
+>>>>>>> origin/main
 		<div id="settingsMenu">
 			<input type="button" id="export" value="Export settings">
 			<input type="button" id="import" value="Import settings">
 			<input type="file" id="import2" name="import2" style="display: none;" />
+<<<<<<< HEAD
 			
+=======
+
+>>>>>>> origin/main
 			<div id="langPickerParent" class="settingsFullsizeParent">
 				<label for="langPicker" id="langPickerLabel">Language:</label>
 				</br>
 				<select id="langPicker">
+<<<<<<< HEAD
 				  <option value="lang">language</option>
+=======
+					<option value="lang">language</option>
+>>>>>>> origin/main
 				</select>
 			</div>
 			<div id="freqPickerParent" class="settingsFullsizeParent">
@@ -62,17 +285,29 @@
 			<div id="colorPickerParent" class="settingsFullsizeParent">
 				<label for="colorPicker" id="colorPickerLabel">Background color:</label>
 				</br>
+<<<<<<< HEAD
 				<input type="color" id="colorPicker" value="#808080">
+=======
+				<input type="color" id="colorPicker">
+>>>>>>> origin/main
 			</div>
 			<div id="lockScreenBaseParent" class="settingsFullsizeParent">
 				<label for="lockScreenBase" id="lockScreenBaseLabel">Lock Screen Base URL:</label>
 				</br>
+<<<<<<< HEAD
 				<p id="lockScreenBaseNote">Note: This should be a domain you have large amount of trust in. It also should not be in your block list and preferably should be lightweight. Honestly, unless you have a really good reason just leave it as it is (https://www.iana.org).</p>
 				<input id="lockScreenBase" name="lockScreenBase" type="url" required/>
+=======
+				<p id="lockScreenBaseNote">Note: This should be a domain you have large amount of trust in. It also
+					should not be in your block list and preferably should be lightweight. Honestly, unless you have a
+					really good reason just leave it as it is (https://www.iana.org).</p>
+				<input id="lockScreenBase" name="lockScreenBase" type="url" required />
+>>>>>>> origin/main
 			</div>
 			<div id="creditsParent" class="settingsFullsizeParent">
 				<label id="creditsLabel">Credits:</label>
 				</br>
+<<<<<<< HEAD
 				- <a href="https://github.com/sdasda7777">sdasda7777</a> (<a href="https://github.com/sdasda7777/ScheduleBlock">programming</a>, under GPL-3.0)
 				</br>
 				- <a href="https://lorcblog.blogspot.com/">Lorc</a> 
@@ -81,21 +316,136 @@
 				</br>
 				- <a href="https://delapouite.com/">Delapouite</a> 
 					(<a href="https://game-icons.net/1x1/delapouite/pencil.html">Pencil icon</a>, under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>)
+=======
+				- <a href="https://github.com/sdasda7777">sdasda7777</a> (<a
+					href="https://github.com/sdasda7777/ScheduleBlock">programming</a>, under GPL-3.0)
+				</br>
+				- <a href="https://lorcblog.blogspot.com/">Lorc</a>
+				(<a href="https://game-icons.net/1x1/lorc/cog.html">Cog icon</a>,
+				under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>)
+				</br>
+				- <a href="https://delapouite.com/">Delapouite</a>
+				(<a href="https://game-icons.net/1x1/delapouite/pencil.html">Pencil icon</a>, under <a
+					href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>)
+>>>>>>> origin/main
 			</div>
 			<div class="settingsFullsizeParent">
 				<label id="creditsLabel">Other:</label>
 				</br>
 				<a href="../SpecRunner.html">Run tests</a>
 			</div>
+<<<<<<< HEAD
 			
+=======
+
+>>>>>>> origin/main
 			<input type="button" id="settingsMenuOK" value="OK">
 			<input type="button" id="settingsMenuCancel" value="Cancel">
 		</div>
 	</div>
+<<<<<<< HEAD
 	
 	<div id="recordEditOverlay">
 		<div id="recordChangeMenu">
 		
+=======
+
+	<div id="recordEditOverlay">
+
+
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Horizontal Form</h5>
+
+				<!-- Horizontal Form -->
+				<form>
+					<div class="row mb-3">
+						<label for="patternInput" class="form-label" id="patternInputLabel">Pattern</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="patternInput" value="pattern-here">
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label for="softLockHoursInput" id="softLockHoursLabel" class="form-label">Soft locked
+							hours</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="softLockHoursInput" value="softhours-here">
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label for="hardLockHoursInput" id="hardLockHoursLabel" class="form-label">Hard
+							locked hours</label>
+						<div class="col-sm-10">
+							<input type="text" id="hardLockHoursInput" value="hardhours-here">
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label for="hardLockHoursInput" id="hardLockHoursLabel" class="form-label">Timeouts</label>
+						<div class="col-sm-10">
+							<input type="text" id="timeoutStringInput" value="timeouts-here">
+						</div>
+					</div>
+
+					<fieldset class="row mb-3">
+						<label label for="destinationInput" id="destinationLabel" class="form-label">Action</label>
+						<div class="col-sm-10">
+							<div class="form-check">
+								<input class="form-check-input" type="radio" id="actionInputClose" name="actionInput"
+									value="Close">
+								<label class="form-check-label" for="actionInputClose" id="actionInputCloseLabel">Close
+									window</label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" id="actionInputLockPage" name="actionInput"
+									value="Close">
+								<label class="form-check-label" for="actionInputClose"
+									id="actionInputCloseLabel">Redirect to lock page</label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" id="actionInputRedirect" name="actionInput"
+									value="Redirect">
+								<label class="form-check-label" for="actionInputRedirect"
+									id="actionInputRedirectLabel">Redirect to:</label>
+								<input class="form-control" type="text" id="destinationInput" value="destination-here">
+							</div>
+
+							<div class="form-check">
+								<input class="form-check-input" type="radio" id="actionInputCustom" name="actionInput"
+									value="Redirect">
+								<label class="form-check-label" for="actionInputCustom"
+									id="actionInputCustomCodeLabel">Custom code:</label>
+								<input class="form-control" type="text" id="actionInputCustomCodeArea">
+							</div>
+						</div>
+					</fieldset>
+					<!-- <div class="text-center">
+						<button type="submit" id="recordEditOK" class="btn btn-primary">Submit</button>
+						<button type="delate" id="recordEditDelete" class="btn btn-danger">Delete</button>
+						<button type="reset" class="btn btn-secondary">Reset</button>
+					</div> -->
+					<!-- <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+						<button type="submit" id="recordEditOK" class="btn btn-primary">Submit</button>
+						<button type="delete" id="recordEditDelete" class="btn btn-danger">Delete</button>
+					</div> -->
+					<div class="row">
+						<div class="col">
+							<button type="submit" id="recordEditOK" class="btn btn-primary">Submit</button>
+						</div>
+						<div class="col">
+							<button type="delete" id="recordEditDelete" class="btn btn-danger">Delete</button>
+						</div>
+					</div>
+
+
+				</form><!-- End Horizontal Form -->
+
+			</div>
+		</div>
+
+
+		<div class="hidden-div" id="recordChangeMenu">
+
+>>>>>>> origin/main
 			<div id="patternInputParent">
 				<label for="patternInput" id="patternInputLabel">Pattern:</label>
 				</br>
@@ -111,12 +461,17 @@
 				</br>
 				<input type="text" id="hardLockHoursInput" value="hardhours-here">
 			</div>
+<<<<<<< HEAD
 			
+=======
+
+>>>>>>> origin/main
 			<div id="timeoutsInputParent">
 				<label for="timeoutsInputParent" id="timeoutsLabel">Timeouts:</label>
 				</br>
 				<input type="text" id="timeoutStringInput" value="timeouts-here">
 			</div>
+<<<<<<< HEAD
 			
 			<div id="destinationInputParent">
 				<label for="destinationInput" id="destinationLabel">Action:</label>
@@ -139,11 +494,36 @@
 				
 			</div>
 			
+=======
+
+			<div id="destinationInputParent">
+				<label for="destinationInput" id="destinationLabel">Action:</label>
+				</br>
+
+				<input type="radio" id="actionInputClose" name="actionInput" value="Close">
+				<label for="actionInputClose" id="actionInputCloseLabel">Close window</label><br>
+
+				<input type="radio" id="actionInputLockPage" name="actionInput" value="Close">
+				<label for="actionInputLockPage" id="actionInputLockPageLabel">Redirect to lock page</label><br>
+
+				<input type="radio" id="actionInputRedirect" name="actionInput" value="Redirect">
+				<label for="actionInputRedirect" id="actionInputRedirectLabel">Redirect to: </label>
+				<input type="text" id="destinationInput" value="destination-here"><br>
+
+				<input type="radio" id="actionInputCustom" name="actionInput" value="Custom Code">
+				<label for="actionInputCustom" id="actionInputCustomCodeLabel">Custom code:</label>
+				<textarea id="actionInputCustomCodeArea">console.log("Hello world");</textarea>
+
+
+			</div>
+
+>>>>>>> origin/main
 			<input type="button" id="recordEditDelete" value="Delete">
 			<input type="button" id="recordEditOK" value="OK">
 			<input type="button" id="recordEditCancel" value="Cancel">
 		</div>
 	</div>
+<<<<<<< HEAD
   </body>
   <style type="text/css" id="rebuildPersistantStylesheet">
 	* {
@@ -153,3 +533,15 @@
   <script src="options_loader.js"></script>
   
 </html>
+=======
+</body>
+<style type="text/css" id="rebuildPersistantStylesheet">
+	* {}
+</style>
+<script src="options_loader.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="popup1.js"></script>
+
+
+</html>
+>>>>>>> origin/main
