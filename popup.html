@@ -14,18 +14,18 @@
           <h4 class="mt-2 text-center"><img src="images/icon48.png" height="35" class="navbar-brand">  Time Schedule</h4>
         </div>
         <div class=" small ">
-          <ul class="nav nav-pills d-flex justify-content-center" id="tabs" role="tablist">
-            <li class="nav-item ml-auto">
+          <ul class="nav nav-pills d-flex justify-content-center mb-2" id="tabs" role="tablist">
+            <li class="nav-item ml-auto mr-3">
               <a href="#todayPanel" class="nav-link active" id="todayTab" data-toggle="pill" role="tab">
               Today's Starts
               </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item mr-3">
               <a href="#dailyReport" class="nav-link " id="dailyTab" data-toggle="pill" role="tab" >
               Daily Report
               </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item mr-3">
               <a href="#oneWeek"  class="nav-link "  id="weekTab" data-toggle="pill" role="tab" >
               Recent Summary 
               </a>
@@ -148,7 +148,7 @@
                             </div>
                             <!-- Block Icon -->
                             <div class="card-body text-center" id="blockIconContainer">
-                              <a href="#blockWebsite">
+                              <a href="#blockWebsite" data-toggle="tooltip" data-placement="top" title="Block the current Website">
                                 <img src="images/block.png" alt="Block Icon" width="100" height="100" id="blockIcon">
                               </a>
                             </div>
@@ -161,6 +161,14 @@
         </div>
 
         <script src="src/popup.js"></script>
+
+        <!-- Bootstrap Tooltip Initialization -->
+        <script>
+          $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+          });
+        </script>
+
 
     </body>
 </html>
