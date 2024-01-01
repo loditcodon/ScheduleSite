@@ -16,10 +16,14 @@ input[type=number] {
 	cursor: pointer;
 }
 
-table,
 th,
 td {
 	border-collapse: collapse;
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
 }
 
 .display table {
@@ -109,19 +113,21 @@ h1,
 	/* Hidden by default */
 	width: 100%;
 	/* Full width (cover the whole page) */
-	height: 100%;
 	/* Full height (cover the whole page) */
 	top: 0;
 	left: 0;
 	right: 0;
-	bottom: 0;
 	/* Black background with opacity */
-	z-index: 2;
+	z-index: 300;
 	/* Specify a stack order in case you're using a different order for other elements */
 	cursor: pointer;
 	/* Add a pointer on hover */
 
 	justify-content: center;
+}
+
+.my-button-container {
+	text-align: right;
 }
 
 .settingsFullsizeParent {
@@ -206,6 +212,7 @@ h1,
 	border-width: 0;
 	cursor: pointer;
 }
+
 .deleteButton {
 	margin: 10%;
 	width: 30px;

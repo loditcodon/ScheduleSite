@@ -155,13 +155,7 @@ function contructViewCallback(data) {
 
 		// Create order number control
 		let recordNumberCell = document.createElement("td");
-		let recordNumberBox = document.createElement("input");
-		recordNumberBox.id = "mvt" + ii;
-		recordNumberBox.type = "number";
-		recordNumberBox.value = (ii + 1);
-		recordNumberBox.min = "1";
-		recordNumberBox.addEventListener("keyup", recordNumberBoxKeyEventHandler);
-		recordNumberCell.appendChild(recordNumberBox);
+		recordNumberCell.innerText = ii + 1;
 		row.appendChild(recordNumberCell);
 
 		// Create cells displaying information about records
@@ -183,7 +177,13 @@ function contructViewCallback(data) {
 			row.appendChild(timeouts);
 
 			let des = document.createElement("td");
-			des.innerText = arr[ii].getAction();
+			if (arr[ii].getAction().includes("window.location =")) {
+				// Nếu có, thực hiện gán cho des với thông báo "Redirect to" và sau đó là chuỗi sau "window.location"
+				des.innerText = "Redirect to: " + arr[ii].getAction().split("window.location =")[1];
+			} else {
+				// Nếu không, gán cho des giá trị của getAction()
+				des.innerText = arr[ii].getAction();
+			}
 			row.appendChild(des);
 		}
 
@@ -288,16 +288,16 @@ function openRecordEditMenu(e) {
  * Requests data from the BackEnd, answer to which opens edit menu
  */
 function deleteButtonHandle(e) {
-    const recordId = parseInt(this.id.substr(6));
+	const recordId = parseInt(this.id.substr(6));
 
-    if (confirm(tp.getTranslatedString(305).format(recordId.toString()))) {
-        let sending = chrome.runtime.sendMessage(
-            {
-                type: "ScheduleBlock_RecordStorage_DeleteRecord",
-                id: recordId
-            }
-        );
-    }
+	if (confirm(tp.getTranslatedString(305).format(recordId.toString()))) {
+		let sending = chrome.runtime.sendMessage(
+			{
+				type: "ScheduleBlock_RecordStorage_DeleteRecord",
+				id: recordId
+			}
+		);
+	}
 }
 
 /**

@@ -52,11 +52,11 @@ export class TranslationProvider {
 
 				"Zadejte stránky, časy, ve které je chcete mít zablokované a kam chcete být přesměrováni (pojem nenavštívitelnost odkazuje na stav, kdy pouze nepůjde otevřít nové karty, pojem znepřístupnění odkazuje na stav, kdy i již otevřené karty budou přesměrovány):"],
 
-			210: ["#",
-				"#"],
+			210: ["ID",
+				"ID"],
 			211: ["Regular expression",
 				"Regulární výraz"],
-			212: ["Soft locked hours/days",
+			212: ["Time to lock",
 				"Časy nenavštívitelnosti"],
 			213: ["Hard locked hours/days",
 				"Časy znepřístupnění"],
