@@ -43,7 +43,7 @@ function secondsToString(seconds,compressed=false){
   }
 };
 var allKeys, timeSpent, totalTimeSpent,sortedTimeList,topCount,topDataSet,topLabels,dateChart;
-var color = ["rgba(255, 0, 0, 1)","rgb(255, 51, 0)","rgb(255, 102, 0)","rgb(255, 153, 0)","rgb(255, 204, 0)","rgb(255, 255, 0)","rgb(204, 255, 0)","rgb(153, 255, 0)","rgb(102, 255, 0)","rgb(51, 255, 0)"];
+var color = ["rgba(199, 0, 57, 1)","rgb(255, 69, 96)","rgb(241, 148, 138)","rgb(211, 84, 0)","rgb(254, 176, 25)","rgb(0, 227, 150)","rgb(0, 143, 251)","rgb(119, 93, 208)","rgb(255, 255, 0)","rgb(204, 255, 0)","rgb(153, 255, 0)","rgb(102, 255, 0)","rgb(51, 255, 0)"];
 totalTimeSpent = 0;
 var today = getDateString(new Date())
 // chrome.storage.local.get(today,function(storedItems){
