@@ -107,12 +107,19 @@
 		<ul class="sidebar-nav" id="sidebar-nav">
 
 			<li class="nav-item">
-				<a class="nav-link collapsed" href="options.html">
+				<a class="nav-link collapsed" href="dashboard.html">
 					<i class="bi bi-grid"></i>
 					<span>Dashboard</span>
 				</a>
 			</li><!-- End Dashboard Nav -->
 
+			<li class="nav-item">
+				<a class="nav-link" href="options.html">
+					<i class="bi bi-journal-text"></i>
+					<span>List block</span>
+				</a>
+			</li>
+			<!-- End the Lisk Block -->
 			<li class="nav-item">
 				<a class="nav-link collapsed" href="custom-profile.html">
 					<i class="bi bi-archive"></i>
@@ -297,8 +304,14 @@
 					</div>
 					<div class="row mb-3">
 						<label for="softLockHoursInput" id="softLockHoursLabel" class="form-label">ABC</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="softLockHoursInput" value="softhours-here">
+						<div class="col">
+							<input type="datetime-local" class="form-control" id="softLockHoursInput"
+								value="softhours-here">
+						</div>
+
+						<div class="col">
+							<input type="datetime-local" class="form-control" id="softLockHoursInput"
+								value="softhours-here">
 						</div>
 					</div>
 
