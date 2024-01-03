@@ -54,11 +54,11 @@ export class TranslationProvider {
 
 			210: ["ID",
 				"ID"],
-			211: ["Regular expression",
+			211: ["Domain",
 				"Regulární výraz"],
-			212: ["Time to lock",
+			212: ["Soft locked hours/days",
 				"Časy nenavštívitelnosti"],
-			213: ["Hard locked hours/days",
+			213: ["Time to lock",
 				"Časy znepřístupnění"],
 			214: ["Timeouts",
 				"Časovače"],
@@ -91,8 +91,7 @@ export class TranslationProvider {
 			"Musí být dvojice povolené a zakázané časové doby oddělené pomocí '/', například '1:00/1:00:00' (jedna povolená minuta poté jedna zakázaná hodina). " +
 			"Po znaku '@' mohou následovat hodinové intervaly, kdy pravidlo platí oddělené ';'. Jednotlivá pravidla mohou být oddělena znakem ',', jednotlivé dny znakem '|'."],
 
-			305: ["The recording will be permanently deleted, are you sure you want to delete it?\n" +
-				"録音は完全に削除されます。削除してもよろしいですか?\n"],
+			305: ["The recording will be permanently deleted, are you sure you want to delete it?"],
 
 			350: ["Regular expression that matches the site you want to be blocked",
 				"Regulární výraz objímající stránky, které chcete zablokovat"],

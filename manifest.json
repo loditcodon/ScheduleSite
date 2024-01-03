@@ -53,6 +53,9 @@
       "16": "/images/icon16.png"
     },
     "default_title": "Schedule Site"
+  },  
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
   },
   "options_ui": {
     "page": "src/options.html",

@@ -42,7 +42,33 @@ if (!String.prototype.format) {
 	};
 }
 
+// document.getElementById('softLockHoursInput1').addEventListener('input', updateHardLockHours);
+// document.getElementById('softLockHoursInput2').addEventListener('input', updateHardLockHours);
 
+// function updateHardLockHours() {
+// 	const input1Value = document.getElementById('softLockHoursInput1').value;
+// 	const input2Value = document.getElementById('softLockHoursInput2').value;
+
+// 	const hardLockHoursValue = `${input1Value}-${input2Value}`;
+// 	console.log(recordEditOverlay.style.display);
+// 	document.getElementById('hardLockHoursInput').value = hardLockHoursValue;
+// }
+
+// window.addEventListener('load', function () {
+//     const recordEditOverlay = document.getElementById('recordEditOverlay');
+//     console.log('a');
+
+//     if (recordEditOverlay.style.display === 'flex') {
+//         const hardLockHoursInputValue = document.getElementById('hardLockHoursInput').value;
+//         console.log(recordEditOverlay.style.display);
+
+//         if (hardLockHoursInputValue.includes('-')) {
+//             const [start, end] = hardLockHoursInputValue.split('-');
+//             document.getElementById('softLockHoursInput1').value = start;
+//             document.getElementById('softLockHoursInput2').value = end;
+//         }
+//     }
+// });
 /**
  * Applies text in currently selected language to all elements
  */
@@ -127,95 +153,98 @@ function addSite() {
  * @param {!string} JSON encoded array of Records
  */
 function contructViewCallback(data) {
-	let arr = Record.fromJSON(data);
-	let t = document.createElement("table");
+    let arr = Record.fromJSON(data);
+    let t = document.createElement("table");
 
-	// Generate table header row
-	let headerRow = document.createElement("tr");
-	let headerInnerTexts = [
-		tp.getTranslatedString(210),
-		tp.getTranslatedString(211),
-		tp.getTranslatedString(212),
-		tp.getTranslatedString(213),
-		tp.getTranslatedString(214),
-		tp.getTranslatedString(215),
-		tp.getTranslatedString(250),
-		tp.getTranslatedString(456)
-	];
+    // Generate table header row
+    let headerRow = document.createElement("tr");
+    let headerInnerTexts = [
+        tp.getTranslatedString(210),
+        tp.getTranslatedString(211),
+        tp.getTranslatedString(212),
+        tp.getTranslatedString(213),
+        tp.getTranslatedString(214),
+        tp.getTranslatedString(215),
+        tp.getTranslatedString(250),
+        tp.getTranslatedString(456)
+    ];
 
-	for (let ii = 0; ii < headerInnerTexts.length; ++ii) {
-		let tempHeader = document.createElement("th");
-		tempHeader.innerText = headerInnerTexts[ii];
-		headerRow.appendChild(tempHeader);
-	}
-	t.appendChild(headerRow);
+    for (let ii = 0; ii < headerInnerTexts.length; ++ii) {
+        let tempHeader = document.createElement("th");
+        tempHeader.innerText = headerInnerTexts[ii];
 
-	for (let ii = 0; ii < arr.length; ++ii) {
-		let row = document.createElement("tr");
+        // Check if the header corresponds to tp.getTranslatedString(212)
+        if (headerInnerTexts[ii] === tp.getTranslatedString(212)) {
+            tempHeader.setAttribute("hidden", true);
+        }
 
-		// Create order number control
-		let recordNumberCell = document.createElement("td");
-		recordNumberCell.innerText = ii + 1;
-		row.appendChild(recordNumberCell);
+        headerRow.appendChild(tempHeader);
+    }
+    t.appendChild(headerRow);
 
-		// Create cells displaying information about records
-		{
-			let pattern = document.createElement("td");
-			pattern.innerText = arr[ii].getRegex();
-			row.appendChild(pattern);
+    for (let ii = 0; ii < arr.length; ++ii) {
+        let row = document.createElement("tr");
 
-			let softhours = document.createElement("td");
-			softhours.innerHTML = arr[ii].getSoftHours().replace(/\|/g, "|<br>");
-			row.appendChild(softhours);
+        // Create order number control
+        let recordNumberCell = document.createElement("td");
+        recordNumberCell.innerText = ii + 1;
+        row.appendChild(recordNumberCell);
 
+        // Create cells displaying information about records
+        {
+            let pattern = document.createElement("td");
+            pattern.innerText = arr[ii].getRegex();
+            row.appendChild(pattern);
+
+            // let softhours = document.createElement("td");
+            // softhours.innerHTML = arr[ii].getSoftHours().replace(/\|/g, "|<br>");
+            // row.appendChild(softhours);
 			let hardhours = document.createElement("td");
 			hardhours.innerHTML = arr[ii].getHardHours().replace(/\|/g, "|<br>");
 			row.appendChild(hardhours);
 
-			let timeouts = document.createElement("td");
-			timeouts.innerHTML = arr[ii].getTimeout();
-			row.appendChild(timeouts);
+            let timeouts = document.createElement("td");
+            timeouts.innerHTML = arr[ii].getTimeout();
+            row.appendChild(timeouts);
 
-			let des = document.createElement("td");
-			if (arr[ii].getAction().includes("window.location =")) {
-				// Nếu có, thực hiện gán cho des với thông báo "Redirect to" và sau đó là chuỗi sau "window.location"
-				des.innerText = "Redirect to: " + arr[ii].getAction().split("window.location =")[1];
-			} else {
-				// Nếu không, gán cho des giá trị của getAction()
-				des.innerText = arr[ii].getAction();
-			}
-			row.appendChild(des);
-		}
+            let des = document.createElement("td");
+            if (arr[ii].getAction().includes("window.location =")) {
+                des.innerText = "Redirect to: " + arr[ii].getAction().split("window.location =")[1];
+            } else {
+                des.innerText = arr[ii].getAction();
+            }
+            row.appendChild(des);
+        }
 
-		// Create edit button
-		let editCell = document.createElement("td");
-		editCell.className = "editCell";
-		let editButton = document.createElement("input");
-		editButton.id = "edit" + ii;
-		editButton.type = "button";
-		editButton.className = "editButton"
-		editButton.value = "";
-		editButton.addEventListener("click", openRecordEditMenu);
-		editCell.appendChild(editButton);
-		row.appendChild(editCell);
+        // Create edit button
+        let editCell = document.createElement("td");
+        editCell.className = "editCell";
+        let editButton = document.createElement("input");
+        editButton.id = "edit" + ii;
+        editButton.type = "button";
+        editButton.className = "editButton"
+        editButton.value = "";
+        editButton.addEventListener("click", openRecordEditMenu);
+        editCell.appendChild(editButton);
+        row.appendChild(editCell);
 
-		// Create delete button
-		let deleteCell = document.createElement("td");
-		deleteCell.className = "deleteCell";
-		let deleteButton = document.createElement("input");
-		deleteButton.id = "delete" + ii;
-		deleteButton.type = "button";
-		deleteButton.className = "deleteButton"
-		deleteButton.value = "";
-		deleteButton.addEventListener("click", deleteButtonHandle);
-		deleteCell.appendChild(deleteButton);
-		row.appendChild(deleteCell);
+        // Create delete button
+        let deleteCell = document.createElement("td");
+        deleteCell.className = "deleteCell";
+        let deleteButton = document.createElement("input");
+        deleteButton.id = "delete" + ii;
+        deleteButton.type = "button";
+        deleteButton.className = "deleteButton"
+        deleteButton.value = "";
+        deleteButton.addEventListener("click", deleteButtonHandle);
+        deleteCell.appendChild(deleteButton);
+        row.appendChild(deleteCell);
 
-		t.appendChild(row);
-	}
+        t.appendChild(row);
+    }
 
-	document.getElementById("display").innerHTML = "";
-	document.getElementById("display").appendChild(t);
+    document.getElementById("display").innerHTML = "";
+    document.getElementById("display").appendChild(t);
 };
 
 /**
@@ -339,6 +368,7 @@ function testRegex() {
 }
 
 export function main() {
+
 	chrome.runtime.onMessage.addListener(
 		(message) => {
 			console.log(message);
@@ -622,7 +652,7 @@ export function main() {
 
 		document.getElementById("recordEditOK").addEventListener("click",
 			(e) => {
-				let softhoursInput = document.getElementById("softLockHoursInput");
+				let softhoursInput = document.getElementById("hardLockHoursInput");
 				let hardhoursInput = document.getElementById("hardLockHoursInput");
 				let timeoutStringInput = document.getElementById("timeoutStringInput");
 
