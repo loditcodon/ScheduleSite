@@ -168,7 +168,7 @@
             </div>
 
           </div>
-          <div class="box-collapse" id="webListDiv">
+          <div class="box-collapse collapse" id="webListDiv">
             <table class="table table-hover">
               <thead style="background-color: #ffffff">
                 <tr>
@@ -181,48 +181,52 @@
             </table>
           </div>
         </div>
-        <div class="tab-pane fade" id="dailyReport" role="tabpanel">
+        <div class="tab-pane fade  " id="dailyReport" role="tabpanel">
           <div class="container">
             <div class="row mt-2">
               <div class="col-8">
                 <div class="form-group">
                   <h5 class="card-title mt-2">Select a Date</h5>
-                  <form class="d-flex mt-5">
-                    <input type="date" class="form-control mx-2" id="dateValue" />
-                    <button class="btn btn-outline-primary" id="dateSubmit">Submit</button>
-                  </form>
-
                 </div>
               </div>
+              <div class="col-8 align-self-center">
+                <input type="date" class="form-control mx-2" id="dateValue" />
+              </div>
+              <div class="col align-self-center">
+                <button class="btn btn-outline-primary" id="dateSubmit">Submit</button>
+              </div>
             </div>
-            <div class="alert alert-danger d-none" id="tryAgain">
+            <div class="alert alert-danger d-none mt-2 ml-2" id="tryAgain" style="width: 50%;">
               <!-- Invalid date! Please try again. -->
             </div>
-            <canvas id="differentDayChart" width="100%" height="100%" class="my-1"></canvas>
-          </div>
-          <div class="container">
-            <div class="row d-none" id="statsRow">
-              <div class="col align-self-center">
-                <button class="btn my-3" id="detailBtn2" data-toggle="collapse" data-target="#webListDiv2">
-                  <span class="small font-weight-bold">See Detailed View</span>
-                </button>
-              </div>
-              <div class="col">
-                <div class="card mb-2">
-                  <div class="card-header font-weight-bold py-1">
-                    Total Time Spent
+            <div class="container text-center">
+              <div class="row mt-5">
+                <div class="col-lg-6 align-self-end">
+                  <div class="card mt-2" style="width: 80%; height: 80%;">
+                    <div class="card-body">
+                      <canvas id="differentDayChart" width="100%" height="100%" class="my-1"></canvas>
+                    </div>
                   </div>
-                  <div class="card-body py-1">
-                    <span id="totalTimeThatDay"></span>
+                </div>
+                <div class="col-lg-6 align-self-end" id="statsRow">
+                  <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                      <h5 class="card-title">Total Time Spent</h5>
+                      <div class="card-body py-1">
+                        <span id="totalTimeThatDay"></span>
+                      </div>
+                      <a id="detailBtn2" data-toggle="collapse" data-target="#webListDiv2" class="btn btn-primary">See
+                        Detailed
+                        View</a>
+                    </div>
                   </div>
                 </div>
               </div>
+
             </div>
-          </div>
-          <div class="container">
-            <div class="collapse" id="webListDiv2">
+            <div class="box-collapse collapse" id="webListDiv2">
               <table class="table table-hover text-center">
-                <thead style="background-color: #a0c1b8">
+                <thead style="background-color: #ffffff">
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Website</th>
