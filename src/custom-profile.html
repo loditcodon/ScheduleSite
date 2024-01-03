@@ -31,6 +31,10 @@
 
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
+    <style>
+
+
+    </style>
 </head>
 
 <body>
@@ -126,95 +130,93 @@
     <div class="popup-container" id="popupContainer">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Grade 1 students</h5>
-
+                <h5 class="card-title" id="popupTitle"></h5>
                 <!-- Default List group -->
-                <ul class="list-group">
-                    <li class="list-group-item">www.facebook.com</li>
-                    <li class="list-group-item">www.tinder.com</li>
-                    <li class="list-group-item">www.phandong.com</li>
-                    <li class="list-group-item">www.youtube.com</li>
-                    <li class="list-group-item">www.shopee.com</li>
-                </ul><!-- End Default List group -->
-
+                <textarea id="popupTextarea" class="form-control" rows="10"></textarea>
             </div>
         </div>
     </div>
 
-
     <main id="main" class="main">
-
         <section class="section">
-
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">List of filters</h5>
-
                     <!-- List group With Icons -->
                     <ul class="list-group">
-                        <li
-                            class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                            Grade 1 students
-                            <div>
-                                <i id="newsiteadd1" class="bi bi-card-list me-1 text-primary"></i>
-                                <i class="bi bi-check-circle me-1 text-success"></i>
+                        <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            Malicious website
+                            <div class="d-flex">
+                                <div>
+                                    <i id="newsiteadd1" class="bi bi-card-list me-1 text-primary cursor-pointer"></i>
+                                </div>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked1" >
+                                    <label class="form-check-label" for="flexSwitchCheckChecked1"></label>
+                                </div>
+                                
                             </div>
                         </li>
-                        <li
-                            class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                            Highschool student
-                            <div>
-                                <i id="newsiteadd1" class="bi bi-card-list me-1 text-primary"></i>
-                                <i class="bi bi-check-circle me-1 text-success"></i>
+                        <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            Fishing website
+                            <div class="d-flex">
+                                <div>
+                                    <i id="newsiteadd2" class="bi bi-card-list me-1 text-primary cursor-pointer"></i>
+                                </div>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked2" >
+                                    <label class="form-check-label" for="flexSwitchCheckChecked2"></label>
+                                </div>
                             </div>
                         </li>
-                        <li
-                            class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                            Student
-                            <div>
-                                <i id="newsiteadd1" class="bi bi-card-list me-1 text-primary"></i>
-                                <i class="bi bi-check-circle me-1 text-success"></i>
+                        <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            Pup website
+                            <div class="d-flex">
+                                <div>
+                                    <i id="newsiteadd3" class="bi bi-card-list me-1 text-primary cursor-pointer"></i>
+                                </div>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked3" >
+                                    <label class="form-check-label" for="flexSwitchCheckChecked3"></label>
+                                </div>
                             </div>
                         </li>
-                        <li
-                            class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                            Employee
-                            <div>
-                                <i id="newsiteadd1" class="bi bi-card-list me-1 text-primary"></i>
-                                <i class="bi bi-check-circle me-1 text-success"></i>
+                        <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            Tracking website
+                            <div class="d-flex">
+                                <div>
+                                    <i id="newsiteadd4" class="bi bi-card-list me-1 text-primary cursor-pointer"></i>
+                                </div>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked4" >
+                                    <label class="form-check-label" for="flexSwitchCheckChecked4"></label>
+                                </div>
                             </div>
                         </li>
-                        <li
-                            class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                            Virus filter 2023
-                            <div>
-                                <i id="newsiteadd1" class="bi bi-card-list me-1 text-primary"></i>
-                                <i class="bi bi-check-circle me-1 text-success"></i>
-                            </div>
-                        </li>
-                        <li
-                            class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                            Virus filter 2024
-                            <div>
-                                <i id="newsiteadd1" class="bi bi-card-list me-1 text-primary"></i>
-                                <i class="bi bi-check-circle me-1 text-success"></i>
+                        <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            VN Bad website
+                            <div class="d-flex">
+                                <div>
+                                    <i id="newsiteadd5" class="bi bi-card-list me-1 text-primary cursor-pointer"></i>
+                                </div>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked5" >
+                                    <label class="form-check-label" for="flexSwitchCheckChecked5"></label>
+                                </div>
                             </div>
                         </li>
                     </ul><!-- End List group With Icons -->
-
                 </div>
             </div>
-
-
-
         </section>
-
     </main><!-- End #main -->
+
 </body>
 
 <style ty pe="text/css" id="rebuildPersistantStylesheet"></style>
 <script src="options_loader.js"></script>
 <script src="assets/js/main.js"></script>
 <script src="popup1.js"></script>
+<script src="geturl.js" defer></script>
 
 </html>
