@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     document.getElementById('newsiteadd2').addEventListener('click', function () {
-        openPopup('Fishing website', 'https://schedulesite.gachcloud.net/api/data/phishingUrl');
+        openPopup('Phishing website', 'https://schedulesite.gachcloud.net/api/data/phishingUrl');
     });
 
     document.getElementById('newsiteadd3').addEventListener('click', function () {

@@ -173,7 +173,24 @@ export class RecordStorage {
 		await this.#storageProvider
 			.storage.local.set({ ScheduleBlock_Websites: Record.toJSON(arr) });
 	}
+	async createNewRecordCustom(type, regex) {
+		console.log(type);
+		let result = await this.#storageProvider.storage.local.get(['Malicious_URL']);
+		console.log(result);
+		let arr = (result && result.Malicious_URL
+			? Record.fromJSON(result.Malicious_URL): []);
+		console.log(regex);
+		arr.push((new Record()).withRegex(regex));
+		await this.#storageProvider
+			.storage.local.set({ Malicious_URL: Record.toJSON(arr) });
+	}
+	async removeRecordCustom(type) {
+		let updateObject = {
+			[`${type}_URL`]: [] 
+		};
 
+		await this.#storageProvider.storage.local.set(updateObject);
+	}
 	/**
 	 * Move record from one position to another, pushing elements in between
 	 * @param {!number} recordNumber original number

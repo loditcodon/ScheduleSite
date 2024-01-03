@@ -416,23 +416,43 @@ export function main()
 	console.log("Background script initialized");
 }
 async function fetchDataFromApi() {
-	try {
-	  const response = await fetch('https://schedulesite.gachcloud.net/api/data/maliciousUrl');
-	  if (response.ok) {
-		const jsonData = await response.json();
-		processMaliciousUrlData(jsonData);
-	  } else {
-		console.error('Failed to fetch data from the API:', response.status, response.statusText);
-	  }
-	} catch (error) {
-	  console.error('Error fetching data from the API:', error);
-	}
-  }
-  function processMaliciousUrlData(jsonData) {
-	const maliciousDomains = jsonData.map(entry => entry.domain);
-  
-	console.log('Malicious Domains:', maliciousDomains);
-  }
+    getDataCheckbox('flexSwitchCheckChecked1', async function (value) {
+        if (value !== undefined && value === true) {
+            try {
+                let recordStorage = new RecordStorage();
+                // recordStorage.removeRecordCustom('Malicious');
+                const response = await fetch('https://schedulesite.gachcloud.net/api/data/maliciousUrl');
+
+                if (response.ok) {
+                    const jsonData = await response.json();
+                    const maliciousDomains = jsonData.map(entry => entry.domain);
+					// const processedDomains = recordStorage.getAllCustom('Malicious');
+					// console.log(processedDomains);
+					recordStorage.createNewRecordCustom('Malicious','a');
+					// recordStorage.createNewRecord('abc.com');
+					for (const domain of maliciousDomains) {
+
+                        // if (!processedDomains.includes(domain)) {
+                        //     recordStorage.createNewRecordCustom('Malicious',domain);
+                        // }
+                    }
+                } else {
+                    console.error('Failed to fetch data from the API:', response.status, response.statusText);
+                }
+            } catch (error) {
+                console.error('Error fetching data from the API:', error);
+            }
+        }
+    });
+}
+
+function getDataCheckbox(storageKey, callback) {
+	chrome.storage.local.get(storageKey, function (result) {
+		const savedState = result[storageKey];
+		callback(savedState);
+	});
+}
+setInterval(updateTime, 1000);
   setInterval(updateTime, 1000);
 
 // Add a new interval for fetchDataFromApi (every hour)
