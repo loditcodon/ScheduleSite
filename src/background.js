@@ -416,36 +416,35 @@ export function main()
 	console.log("Background script initialized");
 }
 async function fetchDataFromApi() {
-    getDataCheckbox('flexSwitchCheckChecked1', async function (value) {
+	let recordStorage = new RecordStorage();
+    await fetchDataForCheckbox('flexSwitchCheckChecked1', 'Malicious_URL', 'https://schedulesite.gachcloud.net/api/data/maliciousUrl',recordStorage);
+    await fetchDataForCheckbox('flexSwitchCheckChecked2', 'Phishing_URL', 'https://schedulesite.gachcloud.net/api/data/phishingUrl',recordStorage);
+    await fetchDataForCheckbox('flexSwitchCheckChecked3', 'Pup_URL', 'https://schedulesite.gachcloud.net/api/data/pupUrl',recordStorage);
+    await fetchDataForCheckbox('flexSwitchCheckChecked4', 'Tracking_URL', 'https://schedulesite.gachcloud.net/api/data/trackingUrl',recordStorage);
+    await fetchDataForCheckbox('flexSwitchCheckChecked5', 'VNBad_URL', 'https://schedulesite.gachcloud.net/api/data/vnbadsiteUrl',recordStorage);
+}
+async function fetchDataForCheckbox(checkboxId, storageKey, url,recordStorage) {
+	console.log(checkboxId, storageKey, url);
+    getDataCheckbox(checkboxId, async function (value) {
         if (value !== undefined && value === true) {
             try {
-                let recordStorage = new RecordStorage();
-                // recordStorage.removeRecordCustom('Malicious');
-                const response = await fetch('https://schedulesite.gachcloud.net/api/data/maliciousUrl');
-
+                recordStorage.removeRecordCustom(storageKey);
+                const response = await fetch(url);
                 if (response.ok) {
                     const jsonData = await response.json();
-                    const maliciousDomains = jsonData.map(entry => entry.domain);
-					// const processedDomains = recordStorage.getAllCustom('Malicious');
-					// console.log(processedDomains);
-					recordStorage.createNewRecordCustom('Malicious','a');
-					// recordStorage.createNewRecord('abc.com');
-					for (const domain of maliciousDomains) {
-
-                        // if (!processedDomains.includes(domain)) {
-                        //     recordStorage.createNewRecordCustom('Malicious',domain);
-                        // }
+                    const domains = jsonData.map(entry => entry.domain);
+                    for (const domain of domains) {
+                        await recordStorage[`createNewRecord${storageKey}`](domain);
                     }
                 } else {
-                    console.error('Failed to fetch data from the API:', response.status, response.statusText);
+                    console.error(`Failed to fetch data from the API for ${storageKey}:`, response.status, response.statusText);
                 }
             } catch (error) {
-                console.error('Error fetching data from the API:', error);
+                console.error(`Error fetching data from the API for ${storageKey}:`, error);
             }
         }
     });
 }
-
 function getDataCheckbox(storageKey, callback) {
 	chrome.storage.local.get(storageKey, function (result) {
 		const savedState = result[storageKey];
@@ -453,7 +452,5 @@ function getDataCheckbox(storageKey, callback) {
 	});
 }
 setInterval(updateTime, 1000);
-  setInterval(updateTime, 1000);
 
-// Add a new interval for fetchDataFromApi (every hour)
   setInterval(fetchDataFromApi, 3600000);

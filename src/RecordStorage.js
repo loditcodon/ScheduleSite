@@ -138,7 +138,16 @@ export class RecordStorage {
 	 */
 	async getAll() {
 		const result = await this.#storageProvider.storage.local.get(['ScheduleBlock_Websites']);
-
+		const result1 = await this.#storageProvider.storage.local.get(['Malicious_URL']);
+		const result2 = await this.#storageProvider.storage.local.get(['Phishing_URL']);
+		const result3 = await this.#storageProvider.storage.local.get(['Pup_URL']);
+		const result4 = await this.#storageProvider.storage.local.get(['Tracking_URL']);
+		const result5 = await this.#storageProvider.storage.local.get(['VNBad_URL']);
+		console.log('result: ',result1);
+		console.log('result: ',result2);
+		console.log('result: ',result3);
+		console.log('result: ',result4);
+		console.log('result: ',result5);
 		return (result && result.ScheduleBlock_Websites
 			? Record.fromJSON(result.ScheduleBlock_Websites) : []);
 	}
@@ -150,7 +159,7 @@ export class RecordStorage {
 	 */
 	async getOne(recordNumber) {
 		const result = await this.#storageProvider.storage.local.get(['ScheduleBlock_Websites']);
-
+		console.log('result: ',result);
 		const arr = (result && result.ScheduleBlock_Websites
 			? Record.fromJSON(result.ScheduleBlock_Websites) : []);
 
@@ -165,31 +174,73 @@ export class RecordStorage {
 	 */
 	async createNewRecord(regex) {
 		let result = await this.#storageProvider.storage.local.get(['ScheduleBlock_Websites']);
+		console.log('result: ',result);
 		let arr = (result && result.ScheduleBlock_Websites
 			? Record.fromJSON(result.ScheduleBlock_Websites) : []);
-
+		console.log('arr',arr);
 		arr.push((new Record()).withRegex(regex));
 
 		await this.#storageProvider
 			.storage.local.set({ ScheduleBlock_Websites: Record.toJSON(arr) });
 	}
-	async createNewRecordCustom(type, regex) {
-		console.log(type);
-		let result = await this.#storageProvider.storage.local.get(['Malicious_URL']);
-		console.log(result);
-		let arr = (result && result.Malicious_URL
-			? Record.fromJSON(result.Malicious_URL): []);
-		console.log(regex);
-		arr.push((new Record()).withRegex(regex));
-		await this.#storageProvider
-			.storage.local.set({ Malicious_URL: Record.toJSON(arr) });
+	async createNewRecordMalicious_URL(domain) {
+			
+			let result = await this.#storageProvider.storage.local.get(['Malicious_URL']);
+			
+			let arr = (result && result.Malicious_URL
+				? Record.fromJSON(result.Malicious_URL) : []);
+			
+			arr.push((new Record()).withRegex(domain));
+			
+			await this.#storageProvider.storage.local.set({ Malicious_URL: Record.toJSON(arr) });
 	}
+	async createNewRecordPhishing_URL(domain) {
+			
+			let result = await this.#storageProvider.storage.local.get(['Phishing_URL']);
+			
+			let arr = (result && result.Phishing_URL
+				? Record.fromJSON(result.Phishing_URL) : []);
+			
+			arr.push((new Record()).withRegex(domain));
+			
+			await this.#storageProvider.storage.local.set({ Phishing_URL: Record.toJSON(arr) });
+	}
+	async createNewRecordPup_URL(domain) {
+			
+			let result = await this.#storageProvider.storage.local.get(['Pup_URL']);
+			
+			let arr = (result && result.Pup_URL
+				? Record.fromJSON(result.Pup_URL) : []);
+			
+			arr.push((new Record()).withRegex(domain));
+			
+			await this.#storageProvider.storage.local.set({ Pup_URL: Record.toJSON(arr) });
+	}
+	async createNewRecordTracking_URL(domain) {
+			
+			let result = await this.#storageProvider.storage.local.get(['Tracking_URL']);
+			
+			let arr = (result && result.Tracking_URL
+				? Record.fromJSON(result.Tracking_URL) : []);
+			
+			arr.push((new Record()).withRegex(domain));
+			
+			await this.#storageProvider.storage.local.set({ Tracking_URL: Record.toJSON(arr) });
+	}
+	async createNewRecordVNBad_URL(domain) {
+			
+			let result = await this.#storageProvider.storage.local.get(['VNBad_URL']);
+			
+			let arr = (result && result.VNBad_URL
+				? Record.fromJSON(result.VNBad_URL) : []);
+			
+			arr.push((new Record()).withRegex(domain));
+			
+			await this.#storageProvider.storage.local.set({ VNBad_URL: Record.toJSON(arr) });
+	}
+	
 	async removeRecordCustom(type) {
-		let updateObject = {
-			[`${type}_URL`]: [] 
-		};
-
-		await this.#storageProvider.storage.local.set(updateObject);
+		await this.#storageProvider.storage.local.remove([type]);
 	}
 	/**
 	 * Move record from one position to another, pushing elements in between
@@ -245,7 +296,7 @@ export class RecordStorage {
 		if (arr.length == 0) return false;
 
 		arr.splice(recordNumber, 1);
-
+		console.log('arr',arr);
 		await this.#storageProvider
 			.storage.local.set({ ScheduleBlock_Websites: Record.toJSON(arr) });
 	}
@@ -257,30 +308,30 @@ export class RecordStorage {
 	 * @returns {(false|string)} false iff not denied, action JS otherwise
 	 */
 	async testWebsite(urlAddress, softCheck) {
-		let updatedElements = {};
-		let checkInterval = (await this.getGeneralProperties()).CheckFrequency * 1000;
-		let nowDate = new Date();
-
-		const result = await this.#storageProvider.storage.local.get(['ScheduleBlock_Websites']);
-		let arr = (result && result.ScheduleBlock_Websites
-			? Record.fromJSON(result.ScheduleBlock_Websites) : []);
-
+		const { CheckFrequency } = await this.getGeneralProperties();
+		const checkInterval = CheckFrequency * 1000;
+		const nowDate = new Date();
+	  
+		const testRecords = ['ScheduleBlock_Websites', 'Malicious_URL','Phishing_URL','Pup_URL','Tracking_URL','VNBad_URL'];
 		let testResult = false;
-		for (let ii = 0; ii < arr.length && testResult === false; ++ii) {
-			let incremented = arr[ii].getIncrementedTimeout(urlAddress, nowDate, checkInterval);
-			if (incremented !== false)
-				arr[ii] = incremented;
-
-			//TODO: this will not work properly for
-			//			allowed timeouts shorter than the checkInterval
-			//			How to check it does work properly???
+	  
+		for (const recordKey of testRecords) {
+		  const result = await this.#storageProvider.storage.local.get([recordKey]);
+		  const arr = (result && result[recordKey] ? Record.fromJSON(result[recordKey]) : []);
+	  
+		  for (let ii = 0; ii < arr.length && testResult === false; ++ii) {
+			const incremented = arr[ii].getIncrementedTimeout(urlAddress, nowDate, checkInterval);
+			if (incremented !== false) arr[ii] = incremented;
+	  
 			testResult = arr[ii].testWebsite(urlAddress, softCheck, nowDate);
+		  }
+	  
+		  await this.#storageProvider.storage.local.set({ [recordKey]: Record.toJSON(arr) });
 		}
-
-		await this.#storageProvider.storage.local.set({ ScheduleBlock_Websites: Record.toJSON(arr) });
-
+	  
 		return (testResult === false ? false : testResult[1]);
-	}
+	  }
+	  
 
 	/**
 	 *
