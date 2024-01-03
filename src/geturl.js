@@ -3,19 +3,19 @@ document.addEventListener('DOMContentLoaded', function () {
     const popupTitle = document.getElementById('popupTitle');
     const popupTextarea = document.getElementById('popupTextarea');
 
-    function openPopup(title, url) {
+    function openPopup(title, apiUrl) {
         popupTitle.textContent = title;
+    
         // Fetch content from the provided URL
-        fetch(url)
-            .then(response => response.text())
+        fetch(apiUrl)
+            .then(response => response.json()) // Assuming the response is in JSON format
             .then(data => {
-                // Remove lines containing '#' or '!'
-                const filteredData = data.split('\n').filter(line => !/[#!]/.test(line)).join('\n');
-                popupTextarea.value = filteredData;
+                // Extract domains from the response and join them with '\n'
+                const domains = data.map(entry => entry.domain).join('\n');
+                popupTextarea.value = domains;
                 popupContainer.style.display = 'block';
             })
             .catch(error => console.error('Error fetching content:', error));
-
     }
 
     function closePopup() {
@@ -25,23 +25,23 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     document.getElementById('newsiteadd1').addEventListener('click', function () {
-        openPopup('Malicious website', 'https://malware-filter.gitlab.io/malware-filter/urlhaus-filter-dnscrypt-blocked-names.txt');
+        openPopup('Malicious website', 'https://schedulesite.gachcloud.net/api/data/maliciousUrl');
     });
 
     document.getElementById('newsiteadd2').addEventListener('click', function () {
-        openPopup('Fishing website', 'https://malware-filter.gitlab.io/malware-filter/urlhaus-filter-dnscrypt-blocked-names.txt');
+        openPopup('Fishing website', 'https://schedulesite.gachcloud.net/api/data/phishingUrl');
     });
 
     document.getElementById('newsiteadd3').addEventListener('click', function () {
-        openPopup('Pup website', 'https://malware-filter.gitlab.io/pup-filter/pup-filter.txt');
+        openPopup('Pup website', 'https://schedulesite.gachcloud.net/api/data/pupUrl');
     });
 
     document.getElementById('newsiteadd4').addEventListener('click', function () {
-        openPopup('Tracking website', 'https://curbengh.github.io/tracking-filter/tracking-data.txt');
+        openPopup('Tracking website', 'https://schedulesite.gachcloud.net/api/data/trackingUrl');
     });
 
     document.getElementById('newsiteadd5').addEventListener('click', function () {
-        openPopup('VN Bad website', 'https://curbengh.github.io/vn-badsite-filter/vn-badsite-filter-dnscrypt-blocked-names.txt');
+        openPopup('VN Bad website', 'https://schedulesite.gachcloud.net/api/data/vnbadsiteUrl');
     });
 
     // Close the popup when clicking outside of it
