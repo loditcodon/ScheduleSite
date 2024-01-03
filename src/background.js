@@ -415,3 +415,25 @@ export function main()
 	//console.log(Record.toJSON([new Record()]));
 	console.log("Background script initialized");
 }
+async function fetchDataFromApi() {
+	try {
+	  const response = await fetch('https://schedulesite.gachcloud.net/api/data/maliciousUrl');
+	  if (response.ok) {
+		const jsonData = await response.json();
+		processMaliciousUrlData(jsonData);
+	  } else {
+		console.error('Failed to fetch data from the API:', response.status, response.statusText);
+	  }
+	} catch (error) {
+	  console.error('Error fetching data from the API:', error);
+	}
+  }
+  function processMaliciousUrlData(jsonData) {
+	const maliciousDomains = jsonData.map(entry => entry.domain);
+  
+	console.log('Malicious Domains:', maliciousDomains);
+  }
+  setInterval(updateTime, 1000);
+
+// Add a new interval for fetchDataFromApi (every hour)
+  setInterval(fetchDataFromApi, 3600000);

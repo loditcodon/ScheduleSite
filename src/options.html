@@ -135,7 +135,7 @@
 			</li><!-- End Statistical Nav -->
 
 			<li class="nav-item">
-				<a class="nav-link collapsed" href="charts-chartjs.html">
+				<a class="nav-link collapsed" href="setting.html">
 					<i class="bi bi-gear"></i>
 					<span>Setting</span>
 				</a>
@@ -302,15 +302,38 @@
 							<input type="text" class="form-control" id="patternInput" value="pattern-here">
 						</div>
 					</div>
-					<div class="row mb-3">
-						<label for="softLockHoursInput" id="softLockHoursLabel" class="form-label">ABC</label>
-						<div class="col">
-							<input type="datetime-local" class="form-control" id="softLockHoursInput"
+					<div class="row mb-3 align-items-center">
+						<label for="softLockHoursInput" id="softLockHoursLabel" class="form-label"></label>
+						<div class="col-2" style="color: rgb(94, 123, 163);">
+							From
+						</div>
+						<div class="col-3">
+							<input type="time" class="form-control" id="softLockHoursInput"
 								value="softhours-here">
 						</div>
+						<div class="col-2" style="color: rgb(94, 123, 163);">
+							To
+						</div>
+						<div class="col-3">
+							<input type="time" class="form-control" id="softLockHoursInput"
+								value="softhours-here">
+						</div>
+					</div>
 
-						<div class="col">
-							<input type="datetime-local" class="form-control" id="softLockHoursInput"
+					<div class="row mb-3 align-items-center">
+						<label for="softLockHoursInput" id="useHoursLabel" class="form-label"></label>
+						<div class="col-2" style="color: rgb(94, 123, 163);">
+							Use
+						</div>
+						<div class="col-3">
+							<input type="time" class="form-control" id="softLockHoursInput"
+								value="softhours-here">
+						</div>
+						<div class="col-2" style="color: rgb(94, 123, 163);">
+							Lock
+						</div>
+						<div class="col-3">
+							<input type="time" class="form-control" id="softLockHoursInput"
 								value="softhours-here">
 						</div>
 					</div>
@@ -348,7 +371,7 @@
 						</div>
 					</fieldset>
 					<div class="my-button-container">
-						<button type="submit" id="recordEditOK" class="btn btn-outline-primary">Submit</button>
+						<button type="submit" id="recordEditOK" class="btn btn-outline-primary" style="width: 30%;">Submit</button>
 					</div>
 
 
@@ -383,7 +406,7 @@
 				<input type="text" id="timeoutStringInput" value="timeouts-here">
 			</div>
 
-			<div id="destinationInputParent">
+			<div id="destinationInputParent mt-4">
 				<label for="destinationInput" id="destinationLabel">Action:</label>
 				</br>
 

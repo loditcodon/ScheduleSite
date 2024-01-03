@@ -65,6 +65,8 @@ function translateGUI() {
 		= tp.getTranslatedString(211) + ":";
 	document.querySelector("#softLockHoursLabel").innerText
 		= tp.getTranslatedString(212) + ":";
+		document.querySelector("#useHoursLabel").innerText
+		= tp.getTranslatedString(457) + ":";
 	document.querySelector("#hardLockHoursLabel").innerText
 		= tp.getTranslatedString(213) + ":";
 	document.querySelector("#timeoutsLabel").innerText
