@@ -324,8 +324,6 @@ h1,
 	align-items: center;
 	justify-content: center;
 	background: rgba(0, 0, 0, 0.5);
-	align-items: center;
-	justify-content: center;
 	z-index: 999;
 	/* Giá trị z-index cao hơn */
 }
